@@ -10,7 +10,7 @@
   "require": {
     "php": ">=5.5.0",
     "illuminate/support": "*",
-    "jowy/feature ": "*"
+    "jowy/feature ": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": ">=4.0"
