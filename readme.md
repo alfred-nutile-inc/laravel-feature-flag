@@ -4,6 +4,7 @@
   * [Installing](#installing)
   * [View](#view)
   * [Menu](#menu)
+  * [Testing](#testing)  
   * [Todo](#todo)
 
 <a name=overview></a>
@@ -300,6 +301,14 @@ Just a note the demo has the Feature Flag menu. Because this core app uses the V
 ~~~
 
 But that is for another post! 
+
+<a name=testing></a>
+## Testing
+
+This Library pulls in `jowy/feature` and that library has tests. Other than that the there is the settings page which I do have some Laravel tests for that you can run once the package is installed.
+
+
+
 
 
 <a name=todo></a>

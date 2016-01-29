@@ -16,7 +16,13 @@
     <div class="form-group">
         <label for="name">Variant</label>
         <textarea name="variants" class="form-control">@if($flag->variants){{ json_encode($flag->variants, true) }}@endif</textarea>
-        <div class="help-block">This is a json formatted variant or just on | off</div>
+        <div class="help-block">This is a json formatted variant or just on | off. Example
+            <br>
+            <pre>{ "users": [ "foo@gmail.com" ] }</pre>
+            or
+            <br>
+            <pre>"off"</pre>
+        </div>
     </div>
 </div>
 

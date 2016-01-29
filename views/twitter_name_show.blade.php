@@ -1,4 +1,4 @@
-@can('see-twitter-field', Auth::user())
+@can('see-twitter-field')
 <div class="row">
     <div class="col-md-12">
         <div class="wrapper wrapper-content animated fadeInRight">
