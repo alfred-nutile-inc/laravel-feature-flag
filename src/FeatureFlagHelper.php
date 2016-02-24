@@ -29,11 +29,10 @@ trait FeatureFlagHelper
 
             \Feature\Feature::create($world, $features);
 
-
         }
         catch(\Exception $e)
         {
-            Log::info("Silent Failure of Feature Flag");
+            Log::info(sprintf("Silent Failure of Feature Flag %s", $e->getMessage()));
         }
     }
 

@@ -22,7 +22,7 @@ class ExampleFeatureProvider extends ServiceProvider {
         $gate->define('see-twitter-field', '\AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureFlagLogic@seeTwitterField');
 
         if (! $this->app->routesAreCached()) {
-            require __DIR__ . '/routes.php';
+            require __DIR__ . '/routes.example.php';
         }
 
         $this->loadViewsFrom(__DIR__.'/../views', 'twitter');

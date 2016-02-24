@@ -17,6 +17,7 @@ class FeatureFlagsProvider extends ServiceProvider {
      */
     public function boot()
     {
+        $this->registerRoutes();
 
         $this->registerViewFiles();
 
@@ -25,6 +26,8 @@ class FeatureFlagsProvider extends ServiceProvider {
         $this->registerFeatureFlags();
 
         $this->publishMigrations();
+
+        $this->publishViews();
     }
 
     /**
@@ -34,7 +37,14 @@ class FeatureFlagsProvider extends ServiceProvider {
      */
     public function register()
     {
-        //
+       $this->registerViewFiles();
+    }
+
+    private function registerRoutes()
+    {
+      if (! $this->app->routesAreCached()) {
+          require __DIR__ . '/routes.php';
+      }
     }
 
     private function registerViewFiles()
@@ -44,7 +54,6 @@ class FeatureFlagsProvider extends ServiceProvider {
 
     private function injectLinks()
     {
-
             view()->composer(
                 'layouts.default', function($view) {
                 if ($view->offsetExists('links')) {
@@ -59,8 +68,6 @@ class FeatureFlagsProvider extends ServiceProvider {
             );
 
     }
-
-
 
     private function overRideGate()
     {
@@ -78,6 +85,14 @@ class FeatureFlagsProvider extends ServiceProvider {
             __DIR__.'/../database/migrations/' => database_path('migrations')
         ], 'migrations');
     }
+
+    private function publishViews()
+    {
+        $this->publishes([
+          __DIR__.'/../views/' => resource_path('views/vendor/laravel-feature-flag')
+        ], 'views');
+    }
+
 
 
 }
