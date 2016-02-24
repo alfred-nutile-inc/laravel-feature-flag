@@ -57,6 +57,18 @@ For example I can use this in my theme
 
 This will install two things. The library I made to do this and the Example library I am using to show it in action.
 
+Set your `composer.json` to 
+
+~~~
+"config": {
+        ....
+    },
+    "minimum-stability": "dev"
+}
+~~~
+
+Then run 
+
 ~~~
 composer require alfred-nutile-inc/laravel-feature-flag
 ~~~
@@ -83,7 +95,7 @@ php artisan migrate
 
 To setup the base table.
 
-If you want to try the demo go with
+If you want to try the demo/example also do
 
 ~~~
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureProvider" --tag='migrations'
@@ -98,12 +110,13 @@ This will make a number of routes
 | Domain | Method   | URI                                | Name                      | Action                                                                         | Middleware |
 +--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
 |        | GET|HEAD | /                                  |                           | Closure                                                                        |            |
-|        | POST     | admin/feature_flags                | feature_flags.store       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@store       |        |
-|        | GET|HEAD | admin/feature_flags                | feature_flags.index       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@getSettings |        |
-|        | GET|HEAD | admin/feature_flags/create         | feature_flags.create_form | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@create      |        |
-|        | DELETE   | admin/feature_flags/{feature}      | feature_flags.delete      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@destroy     |        |
-|        | PUT      | admin/feature_flags/{feature}      | feature_flags.update      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@update      |        |
-|        | GET|HEAD | admin/feature_flags/{feature}/edit | feature_flags.edit_form   | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@edit        |        |
+|        | POST     | admin/feature_flags                | feature_flags.store       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@store       |            |
+|        | GET|HEAD | admin/feature_flags                | feature_flags.index       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@getSettings |            |
+|        | GET|HEAD | admin/feature_flags/create         | feature_flags.create_form | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@create      |            |
+|        | GET|HEAD | admin/feature_flags/example        | feature_flags.example       | \AlfredNutileInc\LaravelFeatureFlags\ExampleController@seeTwtterField          |            |
+|        | DELETE   | admin/feature_flags/{feature}      | feature_flags.delete      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@destroy     |            |
+|        | PUT      | admin/feature_flags/{feature}      | feature_flags.update      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@update      |            |
+|        | GET|HEAD | admin/feature_flags/{feature}/edit | feature_flags.edit_form   | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@edit        |            |
 +--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
 ~~~
 
@@ -122,8 +135,7 @@ Note: The view is `@extends('layouts.default')` so if yours differs just publish
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
 ~~~
 
-This will then allow the files in `resources/vendors/larave-feature-flag`
-
+This will then place the files in `resources/vendors/larave-feature-flag`
 
 ### The Core Library FeatureFlagsProvider
 
@@ -356,8 +368,6 @@ But that is for another post!
 ## Testing
 
 This Library pulls in `jowy/feature` and that library has tests. Other than that the there is the settings page which I do have some Laravel tests for that you can run once the package is installed.
-
-
 
 
 
