@@ -67,7 +67,6 @@ class FeatureFlagTest extends TestCase
         factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'add-twitter-field',
-                'active' => 1,
                 'variants' => '{ "users": [ "foo" ]}'
             ]
         );

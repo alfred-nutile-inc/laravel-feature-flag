@@ -14,7 +14,6 @@ class ExampleFeatureProvider extends ServiceProvider {
      */
     public function boot(GateContract $gate)
     {
-
         $this->registerPolicies($gate);
 
         $gate->define('add-twitter-field', '\AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureFlagLogic@addTwitterField');

@@ -34,7 +34,6 @@ class SettingsPageTest extends TestCase
         factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'add-twitter-field',
-                'active' => 1,
                 'variants' => [ 'users' => [$this->user->email]]
             ]
         );
@@ -54,7 +53,6 @@ class SettingsPageTest extends TestCase
         $flag = factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => $key,
-                'active' => 1,
                 'variants' => [ 'users' => [$this->user->email]]
             ]
         );

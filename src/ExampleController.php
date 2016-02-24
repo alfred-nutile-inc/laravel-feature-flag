@@ -12,7 +12,12 @@ class ExampleController extends Controller
 
     public function seeTwtterField()
     {
-        $user = new \App\User();
+
+        /**
+          * Gate is based around an authenticated user
+          */
+        $user = factory(\App\User::class)->create();
+        \Auth::login($user);
         return view('twitter::full_page_twitter_show', compact('user'));
     }
 
