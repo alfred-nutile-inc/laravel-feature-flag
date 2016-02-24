@@ -28,7 +28,8 @@ trait FeatureFlagHelper
             $world = new World();
 
             \Feature\Feature::create($world, $features);
-
+            Log::info(sprintf("Silent Message of Feature Flag Done Setting up"));
+            Log::info($features);
         }
         catch(\Exception $e)
         {
@@ -38,8 +39,21 @@ trait FeatureFlagHelper
 
     private function transformFeatures($features, $value, $key)
     {
-        $features[$value['key']] = $value;
-        $features[$value['key']]['users'] = (isset($value['variants']['users'])) ? $value['variants']['users'] : [];
+        $features[$value['key']] = $this->getAndSetValue($value);
+
+        if(isset($value['variants']['users']))
+        {
+          $features[$value['key']]['users'] = $value['variants']['users'];
+        }
+
         return $features;
+    }
+
+    private function getAndSetValue($value)
+    {
+      if($value['variants'] == 'on' or $value['variants'] == 'off')
+        return $value['variants'];
+
+      return $value;
     }
 }

@@ -12,7 +12,8 @@ class ExampleController extends Controller
 
     public function seeTwtterField()
     {
-        return view('twitter::full_page_twitter_show');
+        $user = new \App\User();
+        return view('twitter::full_page_twitter_show', compact('user'));
     }
 
 }

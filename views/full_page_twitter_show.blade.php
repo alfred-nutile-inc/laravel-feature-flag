@@ -24,15 +24,22 @@
                         <p>No Twitter Handle here</p>
                     @endif
 
+                    <pre>
+                      <?php print_r(\Feature\Feature::isEnabled('see-twitter-field')); ?>
+                    </pre>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endcan
+
 @cannot('see-twitter-field')
  <p>
    <b>Twitter Flag NOT ON</b>
+   <pre>
+     <?php print_r(\Feature\Feature::isEnabled('see-twitter-field')); ?>
+   </pre>
  </p>
 @endcan
 

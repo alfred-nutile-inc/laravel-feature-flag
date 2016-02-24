@@ -15,6 +15,7 @@ class ExampleFeatureFlagLogic
 
     public function seeTwitterField()
     {
+        Log::info("Being called?");
         return \Feature\Feature::isEnabled('see-twitter-field');
     }
 
