@@ -15,6 +15,16 @@ class AlterUsersTableAddTwitter extends Migration
         {
             $table->string('twitter')->nullable();
         });
+
+        $feature = new \AlfredNutileInc\LaravelFeatureFlags\FeatureFlag();
+        $feature->key = 'add-twitter-field';
+        $feature->variants = "on";
+        $feature->save();
+
+        $feature = new \AlfredNutileInc\LaravelFeatureFlags\FeatureFlag();
+        $feature->key = 'see-twitter-field';
+        $feature->variants = "on";
+        $feature->save();
     }
 
     /**
@@ -29,6 +39,15 @@ class AlterUsersTableAddTwitter extends Migration
             if(Schema::hasColumn('users', 'twitter'))
                 $table->dropColumn('twitter');
 
+            if($gate = \AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::where('key', 'see-twitter-field')->first())
+            {
+              $gate->delete();
+            }
+
+            if($gate = \AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::where('key', 'add-twitter-field')->first())
+            {
+              $gate->delete();
+            }
         });
     }
 }
