@@ -57,6 +57,10 @@ For example I can use this in my theme
 
 This will install two things. The library I made to do this and the Example library I am using to show it in action.
 
+~~~
+composer require alfred-nutile-inc/laravel-feature-flag
+~~~
+
 ### Providers
 
 Add the below to your config/app.php
@@ -66,11 +70,14 @@ AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider::class,
 AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureProvider::class,
 ~~~
 
-Then run migration
+Publish 
 
 ~~~
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='migrations'
+~~~
 
+Then run migration
+~~~
 php artisan migrate
 ~~~
 
@@ -85,6 +92,37 @@ php artisan migrate
 
 It has a rollback to help clean up after.
 
+This will make a number of routes
+~~~
++--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
+| Domain | Method   | URI                                | Name                      | Action                                                                         | Middleware |
++--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
+|        | GET|HEAD | /                                  |                           | Closure                                                                        |            |
+|        | POST     | admin/feature_flags                | feature_flags.store       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@store       |        |
+|        | GET|HEAD | admin/feature_flags                | feature_flags.index       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@getSettings |        |
+|        | GET|HEAD | admin/feature_flags/create         | feature_flags.create_form | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@create      |        |
+|        | DELETE   | admin/feature_flags/{feature}      | feature_flags.delete      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@destroy     |        |
+|        | PUT      | admin/feature_flags/{feature}      | feature_flags.update      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@update      |        |
+|        | GET|HEAD | admin/feature_flags/{feature}/edit | feature_flags.edit_form   | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@edit        |        |
++--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
+~~~
+
+Note: It defaults wide open! Add auth as needed.
+
+~~~
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+~~~
+
+Note: The view is `@extends('layouts.default')` so if yours differs just publish the views locally 
+
+~~~
+php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
+~~~
+
+This will then allow the files in `resources/vendors/larave-feature-flag`
 
 
 ### The Core Library FeatureFlagsProvider
@@ -156,6 +194,18 @@ But this is how we find things like 'can this user see this feature', 'what user
 Just so I could try out this library on something so I could wrap my head around it I made an example feature that added a twitter field to the user data.
 
 This was great cause it was a schema change so I had to make sure the field was `nullable` and it offered some view level interactions with the FeatureFlag.
+
+There is a dummy route called `/admin/feature_flags/example` that you can visit and it will show that it is not on.
+
+![ff_off](https://dl.dropboxusercontent.com/s/lld10qlvnbhzyhz/ff_off.png?dl=0)
+
+But if you then go to the database to add it `/admin/feature_flags/create`
+
+and add 
+
+![ff_on](https://dl.dropboxusercontent.com/s/lcepthfx5t9i5rj/ff_on.png?dl=0)
+
+And go back it will be on. This is because the Example has a Gate made (NOTE: We are going to make ONE Dyamic gate shortly)
 
 <a name=view></a>
 ## In the View
