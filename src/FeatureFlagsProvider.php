@@ -3,8 +3,9 @@
 namespace AlfredNutileInc\LaravelFeatureFlags;
 
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Support\Facades\Log;
 
 class FeatureFlagsProvider extends ServiceProvider {
 
@@ -15,7 +16,7 @@ class FeatureFlagsProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot()
+    public function boot(GateContract $gate)
     {
         $this->registerRoutes();
 
@@ -28,6 +29,10 @@ class FeatureFlagsProvider extends ServiceProvider {
         $this->publishMigrations();
 
         $this->publishViews();
+
+        $this->registerPolicies($gate);
+
+        $this->defineFeatureFlagGate($gate);
     }
 
     /**
@@ -37,14 +42,14 @@ class FeatureFlagsProvider extends ServiceProvider {
      */
     public function register()
     {
-       $this->registerViewFiles();
+        $this->registerViewFiles();
     }
 
     private function registerRoutes()
     {
-      if (! $this->app->routesAreCached()) {
-          require __DIR__ . '/routes.php';
-      }
+        if (! $this->app->routesAreCached()) {
+            require __DIR__ . '/routes.php';
+        }
     }
 
     private function registerViewFiles()
@@ -54,18 +59,18 @@ class FeatureFlagsProvider extends ServiceProvider {
 
     private function injectLinks()
     {
-            view()->composer(
-                'layouts.default', function($view) {
-                if ($view->offsetExists('links')) {
-                    $links_original = $view->offsetGet('links');
-                    $links = [
-                        ['title' => 'Feature Flags', 'url' => route('feature_flags.index'), 'icon' => 'flag-o']
-                    ];
+        view()->composer(
+            'layouts.default', function($view) {
+            if ($view->offsetExists('links')) {
+                $links_original = $view->offsetGet('links');
+                $links = [
+                    ['title' => 'Feature Flags', 'url' => route('feature_flags.index'), 'icon' => 'flag-o']
+                ];
 
-                    $view->with('links', array_merge($links_original, $links));
-                }
+                $view->with('links', array_merge($links_original, $links));
             }
-            );
+        }
+        );
 
     }
 
@@ -89,10 +94,24 @@ class FeatureFlagsProvider extends ServiceProvider {
     private function publishViews()
     {
         $this->publishes([
-            __DIR__.'/../views/' => base_path('resources/views/vendor/feature_flags')
+            __DIR__.'/../views/' => base_path('resources/views/vendor/laravel-feature-flag')
         ], 'views');
     }
 
+    private function defineFeatureFlagGate($gate)
+    {
+        $gate->define('feature-flag', function ($user, $flag_id) {
+            try
+            {
+                return \Feature\Feature::isEnabled($flag_id);
+            } catch (\Exception $e)
+            {
+                Log::info(sprintf("FeatureFlagsProvider: error with feature flag %s. '%s'", $flag_id, $e->getMessage()));
+                // Defaults to false in case of error.
+                return false;
+            }
+        });
+    }
 
 
 }
