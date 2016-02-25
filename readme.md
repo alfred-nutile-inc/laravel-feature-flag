@@ -46,7 +46,7 @@ One key thing, as I use this in Laravel, is I will try and mix this with the exi
 For example I can use this in my theme
 
 ~~~
-@can('add-twitter-field')
+@can('feature-flage', 'add-twitter-field')
 <!-- code here -->
 @endcan
 ~~~
@@ -55,9 +55,7 @@ For example I can use this in my theme
 <a name=installing></a>
 ## Installing 
 
-This will install two things. The library I made to do this and the Example library I am using to show it in action.
-
-Set your `composer.json` to 
+Set your `composer.json` to the following to avoid composer error messages:
 
 ~~~
 "config": {
@@ -67,7 +65,7 @@ Set your `composer.json` to
 }
 ~~~
 
-Then run 
+Require the package using composer: 
 
 ~~~
 composer require alfred-nutile-inc/laravel-feature-flag
@@ -75,27 +73,31 @@ composer require alfred-nutile-inc/laravel-feature-flag
 
 ### Providers
 
-Add the below to your config/app.php
+Add the following to your config/app.php providers array:
 
 ~~~
 AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider::class,
-AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureProvider::class,
 ~~~
 
-Publish 
+Publish the package migrations:
 
 ~~~
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='migrations'
 ~~~
 
-Then run migration
+Then run migration to setup the base table:
+
 ~~~
 php artisan migrate
 ~~~
 
-To setup the base table.
+### Demo / Example
 
-If you want to try the demo/example also do
+If you want to try the demo/example also include the following in your config/app.php providers array:
+
+~~~
+AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureProvider::class
+~~~
 
 ~~~
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureProvider" --tag='migrations'
@@ -104,7 +106,9 @@ php artisan migrate
 
 It has a rollback to help clean up after.
 
-This will make a number of routes
+### Notes
+
+This will make a number of routes:
 ~~~
 +--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
 | Domain | Method   | URI                                | Name                      | Action                                                                         | Middleware |
@@ -186,10 +190,6 @@ The database saves the data in a way that I will talk about below. Above is the 
 
 So at this point we have World, which is where we set our way of finding truth and `$features` which is the state of all features.
 
-**NOTE**
-The `FeatureFlagProvider` will override one method in the default `Gate` class. This was just so having a
-`@can` in a view did not crash the app if I was turn turn off that `Gate`
-
 #### World
 
 This class implements the interface that comes with the library
@@ -217,7 +217,7 @@ and add
 
 ![ff_on](https://dl.dropboxusercontent.com/s/lcepthfx5t9i5rj/ff_on.png?dl=0)
 
-And go back it will be on. This is because the Example has a Gate made (NOTE: We are going to make ONE Dyamic gate shortly)
+And go back it will be on.
 
 <a name=view></a>
 ## In the View
@@ -225,7 +225,7 @@ And go back it will be on. This is because the Example has a Gate made (NOTE: We
 
 I made a view of it 
 ~~~
-@can('add-twitter-field')
+@can('feature-flag', 'add-twitter-field')
 <div class="form-group">
     <div class="form-group">
         <label for="twitter">Twitter Name</label>
@@ -259,44 +259,6 @@ That can be injected into the main view that this feature will be altering
 </div>
 ~~~
 
-All of this is registered in the Provider setup above
-
-~~~
-public function boot(GateContract $gate)
-{
-
-  $this->registerPolicies($gate);
-  
-  $gate->define('add-twitter-field', '\AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureFlagLogic@addTwitterField');
-  
-  $gate->define('see-twitter-field', '\AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureFlagLogic@seeTwitterField');
-    }
-~~~
-
-Those logic classes are super simple thanks to this library and really could just have been Closures.
-
-~~~
-<?php
-
-namespace AlfredNutileInc\LaravelFeatureFlags;
-
-
-class ExampleFeatureFlagLogic
-{
-
-    public function addTwitterField()
-    {
-        return \Feature\Feature::isEnabled('add-twitter-field');
-    }
-
-    public function seeTwitterField($user)
-    {
-        return \Feature\Feature::isEnabled('see-twitter-field');
-    }
-
-
-}
-~~~
 
 Now you can turn off this info as needed. And in your Controllers/Repository just remember to not assume that field is coming in via request or that it even exists in the Model.
 
