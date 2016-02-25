@@ -89,7 +89,7 @@ class FeatureFlagsProvider extends ServiceProvider {
     private function publishViews()
     {
         $this->publishes([
-          __DIR__.'/../views/' => resource_path('views/vendor/feature_flags')
+            __DIR__.'/../views/' => base_path('resources/views/vendor/laravel-feature-flag')
         ], 'views');
     }
 
