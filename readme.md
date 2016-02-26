@@ -88,7 +88,7 @@ Important: The routes detault to being projected by $this->middleware('auth') bu
 
 Visit `/admin/feature_flags` to manage features via the UI.
 
-<a name=demo></a>
+<a name=example></a>
 ## Demo / Example
 
 If you want to try the demo/example also include the following in your config/app.php providers array:
