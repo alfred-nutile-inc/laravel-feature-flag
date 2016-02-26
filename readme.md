@@ -55,8 +55,6 @@ Require the package using composer:
 composer require alfred-nutile-inc/laravel-feature-flag
 ~~~
 
-### Providers
-
 Add the following to your config/app.php providers array:
 
 ~~~
@@ -85,6 +83,9 @@ This will then place the files in `resources/vendors/feature_flags`. Just note t
 
 Important: The routes detault to being projected by $this->middleware('auth') but you should check your installation to make sure permissions are acceptable.
 
+### Usage
+
+Visit `/admin/feature_flags` to manage features via the UI.
 
 ### Demo / Example
 
