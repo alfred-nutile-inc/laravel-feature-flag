@@ -75,6 +75,17 @@ Then run migration to setup the base table:
 php artisan migrate
 ~~~
 
+This package creates a number of routes. They can be overridden by publishing the views:
+
+~~~
+php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
+~~~
+
+This will then place the files in `resources/vendors/feature_flags`. Just note that the views `@extends('layouts.default')` so if yours differs you will need to make an adjustment to the published views files. 
+
+Important: The routes detault to being projected by $this->middleware('auth') but you should check your installation to make sure permissions are acceptable.
+
+
 ### Demo / Example
 
 If you want to try the demo/example also include the following in your config/app.php providers array:
@@ -92,106 +103,8 @@ php artisan migrate
 
 It has a rollback to help clean up after.
 
-### Notes
+There is a dummy route called `/admin/feature_flags/example` that you can visit and it will show that it is not on. But if you then go to the admin UI `/admin/feature_flags` you can toggle it on and off. 
 
-This will make a number of routes:
-~~~
-+--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
-| Domain | Method   | URI                                | Name                      | Action                                                                         | Middleware |
-+--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
-|        | GET|HEAD | /                                  |                           | Closure                                                                        |            |
-|        | POST     | admin/feature_flags                | feature_flags.store       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@store       |            |
-|        | GET|HEAD | admin/feature_flags                | feature_flags.index       | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@getSettings |            |
-|        | GET|HEAD | admin/feature_flags/create         | feature_flags.create_form | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@create      |            |
-|        | GET|HEAD | admin/feature_flags/example        | feature_flags.example       | \AlfredNutileInc\LaravelFeatureFlags\ExampleController@seeTwtterField          |            |
-|        | DELETE   | admin/feature_flags/{feature}      | feature_flags.delete      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@destroy     |            |
-|        | PUT      | admin/feature_flags/{feature}      | feature_flags.update      | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@update      |            |
-|        | GET|HEAD | admin/feature_flags/{feature}/edit | feature_flags.edit_form   | \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@edit        |            |
-+--------+----------+------------------------------------+---------------------------+--------------------------------------------------------------------------------+------------+
-~~~
-
-Note: It defaults wide open! Add auth as needed.
-
-~~~
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-~~~
-
-Note: The view is `@extends('layouts.default')` so if yours differs just publish the views locally 
-
-~~~
-php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
-~~~
-
-This will then place the files in `resources/vendors/feature_flags`
-
-
-### Then the ExampleFeature Provider
-
-Just so I could try out this library on something so I could wrap my head around it I made an example feature that added a twitter field to the user data.
-
-This was great cause it was a schema change so I had to make sure the field was `nullable` and it offered some view level interactions with the FeatureFlag.
-
-There is a dummy route called `/admin/feature_flags/example` that you can visit and it will show that it is not on.
-
-![ff_off](https://dl.dropboxusercontent.com/s/lld10qlvnbhzyhz/ff_off.png?dl=0)
-
-But if you then go to the database to add it `/admin/feature_flags/create`
-
-and add 
-
-![ff_on](https://dl.dropboxusercontent.com/s/lcepthfx5t9i5rj/ff_on.png?dl=0)
-
-And go back it will be on.
-
-<a name=view></a>
-## In the View
-
-
-I made a view of it 
-~~~
-@can('feature-flag', 'add-twitter-field')
-<div class="form-group">
-    <div class="form-group">
-        <label for="twitter">Twitter Name</label>
-        <input type="text" name="twitter" class="form-control" value="@if($user->twitter){{ $user->twitter }}@endif"/>
-    </div>
-</div>
-@endcan
-~~~
-
-That can be injected into the main view that this feature will be altering
-
-~~~
-<div class="form-group">
-    <div class="form-group">
-        <label for="name">Email</label>
-        <input type="text" name="email" class="form-control" value="@if($user->email){{ $user->email  }}@endif"/>
-    </div>
-</div>
-
-@include('feature_flags::twitter_name_input')
-
-<div class="form-group">
-    <div class="form-group">
-        <label for="active">Is Admin</label>
-        @if($user->is_admin && $user->is_admin == 1)
-            <input type="checkbox" name="is_admin" class="form-control" checked="checked" value="1">
-        @else
-            <input type="checkbox" name="is_admin" class="form-control" value="1">
-        @endif
-    </div>
-</div>
-~~~
-
-
-Now you can turn off this info as needed. And in your Controllers/Repository just remember to not assume that field is coming in via request or that it even exists in the Model.
-
-~~~
-$user->twitter = ($request->input("twitter")) ? $request->input("twitter") : null;
-~~~
 
 <a name=testing></a>
 ## Testing
