@@ -10,6 +10,8 @@
 <a name=overview></a>
 ## Overview
 
+You can find a comprehensive blog post about [this library here](https://alfrednutile.info/posts/175). This project is a work in progress.
+
 We are working on using FeatureFlags or Toggles in our applications. For one we are aiming to do all our work on mainline branch at all times so this would be a key coding discipline to use FeatureFlags so we can hide a feature in progress knowing it will not interfere with the application. For example if a hotfix or another feature is ready to go to production we can push that with no worries of the in progress feature. 
 
 At the core we use this library [Atriedes/feature](https://github.com/Atriedes/feature) as it has the logic needed to consider common feature flag states eg user, users, on, off, groups, admin, internal, random etc. However, we are also mixing in some nice Laravel [Authorization](https://laravel.com/docs/5.2/authorization)features so you can do things like: 
