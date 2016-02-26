@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <form action="{{ route('feature_flags.store') }}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                @include('feature_flags::form')
+                @include('feature_flags::feature-flag.form')
             </form>
         </div>
     </div>

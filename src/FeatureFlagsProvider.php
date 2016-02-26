@@ -74,16 +74,6 @@ class FeatureFlagsProvider extends ServiceProvider {
 
     }
 
-    private function overRideGate()
-    {
-        $this->app->singleton(GateContract::class, function ($app) {
-            return new GateOverride($app, function () use ($app) {
-                return $app['auth']->user();
-            });
-        });
-
-    }
-
     private function publishMigrations()
     {
         $this->publishes([
@@ -94,7 +84,7 @@ class FeatureFlagsProvider extends ServiceProvider {
     private function publishViews()
     {
         $this->publishes([
-            __DIR__.'/../views/' => base_path('resources/views/vendor/laravel-feature-flag')
+            __DIR__.'/../views/feature-flag/' => base_path('resources/views/vendor/feature_flag')
         ], 'views');
     }
 

@@ -1,4 +1,4 @@
-@can('see-twitter-field')
+@can('feature-flag', 'see-twitter-field')
 <div class="row">
     <div class="col-md-12">
         <div class="wrapper wrapper-content animated fadeInRight">
