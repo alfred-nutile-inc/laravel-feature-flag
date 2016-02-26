@@ -2,8 +2,8 @@
 
   * [Overview](#overview)
   * [Installing](#installing)
-  * [View](#view)
-  * [Menu](#menu)
+  * [Usage](#usage)
+  * [Example](#example)
   * [Testing](#testing)  
   * [Todo](#todo)
 
@@ -83,11 +83,13 @@ This will then place the files in `resources/vendors/feature_flags`. Just note t
 
 Important: The routes detault to being projected by $this->middleware('auth') but you should check your installation to make sure permissions are acceptable.
 
-### Usage
+<a name=usage></a>
+## Usage
 
 Visit `/admin/feature_flags` to manage features via the UI.
 
-### Demo / Example
+<a name=demo></a>
+## Demo / Example
 
 If you want to try the demo/example also include the following in your config/app.php providers array:
 
