@@ -81,9 +81,15 @@ This package creates a number of routes. They can be overridden by publishing th
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
 ~~~
 
-This will then place the files in `resources/vendors/feature_flags`. Just note that the views `@extends('layouts.default')` so if yours differs you will need to make an adjustment to the published views files. 
+This will then place the files in `resources/vendors/laravel-feature-flags`. Just note that the views `@extends('layouts.default')` so if yours differs you will need to make an adjustment to the published views files. 
 
-Important: The routes detault to being projected by $this->middleware('auth') but you should check your installation to make sure permissions are acceptable.
+Next, publish the configuration:
+
+~~~
+php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='config'
+~~~
+
+Important: The routes detault to being projected by the 'auth' middleware but you should check your installation to make sure permissions are acceptable. Middleware settings are configurable in 'config/laravel-feature-flag.php' file.
 
 <a name=usage></a>
 ## Usage
