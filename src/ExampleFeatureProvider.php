@@ -13,7 +13,7 @@ class ExampleFeatureProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../views/twitter-example', 'twitter-example');
+        $this->loadViewsFrom(__DIR__.'/../views', 'twitter');
 
         $this->publishMigrations();
     }

@@ -9,7 +9,7 @@
         you can begin to modify the variants as needed.
     </p>
 
-        <a class="btn btn-default" href="{{ route('feature_flags.create_form') }}">Create Feature Flag</a>
+        <a class="btn btn-default" href="{{ route('laravel-feature-flag.create_form') }}">Create Feature Flag</a>
         <hr>
         <table class="table table-striped">
             <thead>
@@ -27,7 +27,7 @@
                     <td>{{ $setting->key }}</td>
                     <td>{{ json_encode($setting->variants, JSON_PRETTY_PRINT) }}</td>
                     <td><a class="btn btn-success" href="/admin/feature_flags/{{ $setting->id }}/edit">Edit</a></td>
-                    <td><form action="{{ route('feature_flags.delete', $setting->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Delete</button></form></td>
+                    <td><form action="{{ route('laravel-feature-flag.delete', $setting->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Delete</button></form></td>
                 </tr>
             @endforeach
         </table>

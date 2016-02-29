@@ -18,6 +18,8 @@ class FeatureFlagsProvider extends ServiceProvider {
      */
     public function boot(GateContract $gate)
     {
+        $this->publishesConfiguration();
+
         $this->registerRoutes();
 
         $this->registerViewFiles();
@@ -54,7 +56,7 @@ class FeatureFlagsProvider extends ServiceProvider {
 
     private function registerViewFiles()
     {
-        $this->loadViewsFrom(__DIR__.'/../views', 'feature_flags');
+        $this->loadViewsFrom(__DIR__.'/../views', 'laravel-feature-flag');
     }
 
     private function injectLinks()
@@ -64,7 +66,7 @@ class FeatureFlagsProvider extends ServiceProvider {
             if ($view->offsetExists('links')) {
                 $links_original = $view->offsetGet('links');
                 $links = [
-                    ['title' => 'Feature Flags', 'url' => route('feature_flags.index'), 'icon' => 'flag-o']
+                    ['title' => 'Feature Flags', 'url' => route('laravel-feature-flag.index'), 'icon' => 'flag-o']
                 ];
 
                 $view->with('links', array_merge($links_original, $links));
@@ -84,7 +86,7 @@ class FeatureFlagsProvider extends ServiceProvider {
     private function publishViews()
     {
         $this->publishes([
-            __DIR__.'/../views/feature-flag/' => base_path('resources/views/vendor/feature_flag')
+            __DIR__.'/../views/' => base_path('resources/views/vendor/laravel-feature-flag')
         ], 'views');
     }
 
@@ -101,6 +103,13 @@ class FeatureFlagsProvider extends ServiceProvider {
                 return false;
             }
         });
+    }
+
+    private function publishesConfiguration()
+    {
+        $this->publishes([
+            __DIR__.'/../config/laravel-feature-flag.php' => config_path('laravel-feature-flag.php'),
+        ], 'config');
     }
 
 
