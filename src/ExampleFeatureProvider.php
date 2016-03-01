@@ -16,6 +16,8 @@ class ExampleFeatureProvider extends ServiceProvider {
         $this->loadViewsFrom(__DIR__.'/../views', 'twitter');
 
         $this->publishMigrations();
+
+        $this->registerRoutes();
     }
 
 
@@ -27,6 +29,13 @@ class ExampleFeatureProvider extends ServiceProvider {
     public function register()
     {
         // TODO: Implement register() method.
+    }
+
+    private function registerRoutes()
+    {
+        if (! $this->app->routesAreCached()) {
+            require __DIR__ . '/routes.example.php';
+        }
     }
 
     private function publishMigrations()

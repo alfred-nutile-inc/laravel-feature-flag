@@ -38,6 +38,17 @@ if (Gate::denies('feature-flag', 'awesome-feature')) {
 }
 ~~~
 
+If you need to pass your feature flags to a front-end JS framework like Angular or Vue.js, you can do so by using the FeatureFlagsForJavascript::get() static method:
+
+~~~
+$js->put(
+            [
+                'pusher_public_key' => env('PUSHER_PUBLIC'),
+                'feature_flags'     => FeatureFlagsForJavascript::get()
+            ]
+        );
+~~~
+
 <a name=installing></a>
 ## Installing 
 
