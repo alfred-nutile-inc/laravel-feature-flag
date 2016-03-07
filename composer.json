@@ -5,6 +5,10 @@
     {
       "name": "Alfred Nutile Inc",
       "email": "me@alfrednutile.info"
+    },
+     {
+      "name": "Nathan Kirschbaum",
+      "email": "nathan@nathankirschbaum.com"
     }
   ],
   "keywords": ["feature-flags", "feature-toggles", "toggles"],

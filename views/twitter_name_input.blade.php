@@ -1,4 +1,4 @@
-@can('add-twitter-field')
+@can('feature-flag', 'add-twitter-field')
 <div class="form-group">
     <div class="form-group">
         <label for="twitter">Twitter Name</label>

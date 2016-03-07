@@ -50,7 +50,7 @@
                 When on you see it when off you do not
               </p>
 
-              @can('see-twitter-field')
+              @can('feature-flag', 'see-twitter-field')
               <div class="row">
                   <div class="col-md-12">
                       <div class="wrapper wrapper-content animated fadeInRight">
@@ -76,7 +76,7 @@
               </div>
               @endcan
 
-              @cannot('see-twitter-field')
+              @cannot('feature-flag', 'see-twitter-field')
                <p>
                  <b>Twitter Flag NOT ON</b>
                  <pre>

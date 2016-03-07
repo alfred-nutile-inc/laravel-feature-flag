@@ -2,8 +2,7 @@
 
 namespace AlfredNutileInc\LaravelFeatureFlags;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Support\ServiceProvider;
 
 class ExampleFeatureProvider extends ServiceProvider {
 
@@ -12,21 +11,13 @@ class ExampleFeatureProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        $this->registerPolicies($gate);
-
-        $gate->define('add-twitter-field', '\AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureFlagLogic@addTwitterField');
-
-        $gate->define('see-twitter-field', '\AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureFlagLogic@seeTwitterField');
-
-        if (! $this->app->routesAreCached()) {
-            require __DIR__ . '/routes.example.php';
-        }
-
         $this->loadViewsFrom(__DIR__.'/../views', 'twitter');
 
         $this->publishMigrations();
+
+        $this->registerRoutes();
     }
 
 
@@ -38,6 +29,13 @@ class ExampleFeatureProvider extends ServiceProvider {
     public function register()
     {
         // TODO: Implement register() method.
+    }
+
+    private function registerRoutes()
+    {
+        if (! $this->app->routesAreCached()) {
+            require __DIR__ . '/routes.example.php';
+        }
     }
 
     private function publishMigrations()

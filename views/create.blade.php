@@ -7,9 +7,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('feature_flags.store') }}" method="POST">
+            <form action="{{ route('laravel-feature-flag.store') }}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                @include('feature_flags::form')
+                @include('laravel-feature-flag::form')
             </form>
         </div>
     </div>
