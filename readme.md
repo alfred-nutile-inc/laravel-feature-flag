@@ -3,7 +3,7 @@
   * [Overview](#overview)
   * [Installing](#installing)
   * [Usage](#usage)
-  * [Usage Non Auth](#usage-non-auth
+  * [Usage Non Auth](#usage-non-auth)
   * [Example](#example)
   * [Testing](#testing)  
   * [Todo](#todo)
