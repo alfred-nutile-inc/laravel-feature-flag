@@ -3,6 +3,7 @@
   * [Overview](#overview)
   * [Installing](#installing)
   * [Usage](#usage)
+  * [Usage Non Auth](#usage-non-auth
   * [Example](#example)
   * [Testing](#testing)  
   * [Todo](#todo)
@@ -48,6 +49,8 @@ $js->put(
             ]
         );
 ~~~
+
+
 
 <a name=installing></a>
 ## Installing 
@@ -106,6 +109,31 @@ Important: The routes detault to being projected by the 'auth' middleware but yo
 ## Usage
 
 Visit `/admin/feature_flags` to manage features via the UI.
+
+
+## Usage Non Auth
+
+Sometimes you are not using this at the Auth user level, it is rare for most of our use cases but for non authenticated situations you can just use this 
+
+~~~
+if(\Feature\Feature::isEnabled('see-twitter-field'))
+{
+  //do something
+}
+~~~
+
+You can see more about that class here `vendor/jowy/feature/src/Feature/Feature.php`
+
+Remember you needed to put this into the database, so it is on or off. You might not have a UI, maybe this is a microservice for example, so just migrate the state into the database for example
+
+~~~
+$feature = new FeatureFlag();
+$feature->key = "see-twitter-field";
+$feature->value = "on"; //or "off"
+$feature->save();
+~~~
+
+Now when the FeatureFlag Provider instantiates it will set this as the "World" state and you can access it via the isEnabled "on" being true and "off" being false.
 
 <a name=example></a>
 ## Demo / Example
