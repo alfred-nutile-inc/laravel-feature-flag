@@ -20,7 +20,7 @@ At the core we use this library [Atriedes/feature](https://github.com/Atriedes/f
 In a blade template:
 
 ~~~php
-@can('feature-flage', 'add-twitter-field')
+@can('feature-flag', 'add-twitter-field')
 <!-- code here -->
 @endcan
 ~~~
@@ -129,7 +129,7 @@ Remember you needed to put this into the database, so it is on or off. You might
 ~~~
 $feature = new FeatureFlag();
 $feature->key = "see-twitter-field";
-$feature->value = "on"; //or "off"
+$feature->variants = "on"; //or "off"
 $feature->save();
 ~~~
 
