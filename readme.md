@@ -161,6 +161,48 @@ There is a dummy route called `/admin/feature_flags/example` that you can visit 
 
 This Library pulls in `jowy/feature` and that library has tests. Other than that the there is the settings page which I do have some Laravel tests for that you can run once the package is installed.
 
+Also if you are trying to test the use of it in your work you can use the helper trait in your test class 
+
+```php
+
+    use DatabaseTransactions, \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagHelper;
+```
+
+Then from there factory out your additions and state then reregister the world
+
+```php
+
+    /**
+     * @test
+     */
+    public function should_fail_validation_since_twitter_missing()
+    {
+        //Make a form request
+        //Set validation on that related to twitter field
+        //make sure the feature flag is on
+
+        $user_id = Rhumsaa\Uuid\Uuid::uuid4()->toString();
+
+        $user = factory(\App\User::class)->create([
+            'id' => $user_id,
+            'is_admin' => 1
+        ]);
+
+        $this->actingAs($user);
+
+        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+            [
+                'key' => 'add-twitter-field',
+                'variants' => 'on'
+            ]
+        );
+
+        $this->registerFeatureFlags();
+        ////
+    }
+
+```
+
 <a name=todo></a>
 ## TODO
 
