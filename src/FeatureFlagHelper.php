@@ -28,8 +28,6 @@ trait FeatureFlagHelper
             $world = new World();
 
             \Feature\Feature::create($world, $features);
-            Log::info(sprintf("Silent Message of Feature Flag Done Setting up"));
-            Log::info($features);
         }
         catch(\Exception $e)
         {
