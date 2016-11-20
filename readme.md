@@ -39,10 +39,12 @@ if (Gate::denies('feature-flag', 'awesome-feature')) {
 }
 ~~~
 
-If you need to pass your feature flags to a front-end JS framework like Angular or Vue.js, you can do so by using the FeatureFlagsForJavascript::get() static method:
+If you need to pass your feature flags to a front-end JS framework like Angular or Vue.js, you can do so by using the FeatureFlagsForJavascript::get() static method.
+
+This uses this library [https://github.com/laracasts/PHP-Vars-To-Js-Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) to put this info into the `windows` object, and for Angular the `$window` now you can access it:
 
 ~~~
-$js->put(
+JavaScript::Put(
             [
                 'pusher_public_key' => env('PUSHER_PUBLIC'),
                 'feature_flags'     => FeatureFlagsForJavascript::get()
