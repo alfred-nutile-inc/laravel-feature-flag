@@ -102,6 +102,5 @@ class World implements \Feature\Contracts\World
      */
     public function log($name, $variant, $selector)
     {
-        Log::info(sprintf("Name %s, Variant %s Selector %s", $name, $variant, $selector));
     }
 }
