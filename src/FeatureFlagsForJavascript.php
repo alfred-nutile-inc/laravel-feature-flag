@@ -4,6 +4,10 @@ namespace AlfredNutileInc\LaravelFeatureFlags;
 
 class FeatureFlagsForJavascript
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> fix style work
     public static function get()
     {
         $flags = FeatureFlag::all();

@@ -1,9 +1,15 @@
 <?php
 
+<<<<<<< HEAD
 /**
  * @codeCoverageIgnore
  */
 Route::group(['middleware' => config('laravel-feature-flag.route_middleware')], function () {
+=======
+use Illuminate\Support\Facades\Config;
+
+Route::group(['middleware' => Config::get('laravel-feature-flag.route_middleware')], function () {
+>>>>>>> fix style work
     Route::get(
         'admin/feature_flags',
         [
@@ -26,6 +32,7 @@ Route::group(['middleware' => config('laravel-feature-flag.route_middleware')], 
         ]
     );
     Route::post(
+<<<<<<< HEAD
         'admin/feature_flags/imports',
         [
             'uses' => '\AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@import',
@@ -33,6 +40,8 @@ Route::group(['middleware' => config('laravel-feature-flag.route_middleware')], 
         ]
     );
     Route::post(
+=======
+>>>>>>> fix style work
         'admin/feature_flags',
         [
             'uses' => '\AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@store',

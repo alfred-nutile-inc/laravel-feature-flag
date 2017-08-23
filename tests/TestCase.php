@@ -2,14 +2,19 @@
 
 namespace Tests;
 
+<<<<<<< HEAD
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Mockery;
 use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider;
+=======
+use Mockery;
+>>>>>>> fix style work
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
 
+<<<<<<< HEAD
     protected function getPackageProviders($app)
     {
         return
@@ -66,5 +71,16 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $app['config']->set('app.debug', env('APP_DEBUG', true));
 
         $app['config']->set('laravel-feature-flag.logging', true);
+=======
+    public function setUp()
+    {
+        parent::setUp();
+    }
+
+
+    public function tearDown()
+    {
+        Mockery::close();
+>>>>>>> fix style work
     }
 }

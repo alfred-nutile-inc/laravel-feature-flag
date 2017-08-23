@@ -91,8 +91,13 @@ class FeatureFlagsProvider extends ServiceProvider
                         $view->with('links', array_merge($links_original, $links));
                     }
                 }
+<<<<<<< HEAD
             );
         }
+=======
+            }
+        );
+>>>>>>> fix style work
     }
 
     private function publishMigrations()
@@ -115,6 +120,7 @@ class FeatureFlagsProvider extends ServiceProvider
             try {
                 return \Feature\Feature::isEnabled($flag_id);
             } catch (\Exception $e) {
+<<<<<<< HEAD
                 if (config("laravel-feature-flag.logging")) {
                     Log::info(
                         sprintf(
@@ -124,6 +130,15 @@ class FeatureFlagsProvider extends ServiceProvider
                         )
                     );
                 }
+=======
+                Log::info(
+                    sprintf(
+                        "FeatureFlagsProvider: error with feature flag %s. '%s'",
+                        $flag_id,
+                        $e->getMessage()
+                    )
+                );
+>>>>>>> fix style work
                 // Defaults to false in case of error.
                 return false;
             }
