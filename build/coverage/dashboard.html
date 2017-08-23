@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/alfrednutile/Code/laravel-feature-flag/src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href=".css/bootstrap.min.css" rel="stylesheet">
+  <link href=".css/nv.d3.min.css" rel="stylesheet">
+  <link href=".css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src=".js/html5shiv.min.js"></script>
+  <script src=".js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="index.html">/Users/alfrednutile/Code/laravel-feature-flag/src</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="AddExampleFeaturesTableSeeder.php.html#7">AddExampleFeaturesTableSeeder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExampleFeatureProvider.php.html#7">ExampleFeatureProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#13">Feature</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#8">FeatureFlagSettingsController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagsForJavascript.php.html#5">FeatureFlagsForJavascript</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#13">FeatureFlagHelper</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="World.php.html#14">World</a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#8">FeatureFlagSettingsController</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#13">FeatureFlagHelper</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="ExampleFeatureProvider.php.html#7">ExampleFeatureProvider</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="World.php.html#14">World</a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="FeatureFlagsForJavascript.php.html#5">FeatureFlagsForJavascript</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="AddExampleFeaturesTableSeeder.php.html#9"><abbr title="AddExampleFeaturesTableSeeder::run">run</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExampleFeatureProvider.php.html#15"><abbr title="ExampleFeatureProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#34"><abbr title="FeatureFlagHelper::transformFeatures">transformFeatures</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#16"><abbr title="FeatureFlagHelper::registerFeatureFlags">registerFeatureFlags</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagsForJavascript.php.html#7"><abbr title="FeatureFlagsForJavascript::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#71"><abbr title="FeatureFlagSettingsController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#55"><abbr title="FeatureFlagSettingsController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#44"><abbr title="FeatureFlagSettingsController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#39"><abbr title="FeatureFlagSettingsController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#25"><abbr title="FeatureFlagSettingsController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#18"><abbr title="FeatureFlagSettingsController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#11"><abbr title="FeatureFlagSettingsController::getSettings">getSettings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#92"><abbr title="Feature::log">log</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#81"><abbr title="Feature::urlFeatures">urlFeatures</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#73"><abbr title="Feature::isInternalRequest">isInternalRequest</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#65"><abbr title="Feature::isAdmin">isAdmin</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#56"><abbr title="Feature::inGroup">inGroup</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#46"><abbr title="Feature::userName">userName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#37"><abbr title="Feature::userId">userId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#29"><abbr title="Feature::uaid">uaid</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Feature.php.html#21"><abbr title="Feature::configValue">configValue</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExampleFeatureProvider.php.html#42"><abbr title="ExampleFeatureProvider::publishMigrations">publishMigrations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExampleFeatureProvider.php.html#35"><abbr title="ExampleFeatureProvider::registerRoutes">registerRoutes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExampleFeatureProvider.php.html#30"><abbr title="ExampleFeatureProvider::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#45"><abbr title="FeatureFlagHelper::getAndSetValue">getAndSetValue</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="World.php.html#55"><abbr title="World::userName">userName</abbr></a></td><td class="text-right">66%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#55"><abbr title="FeatureFlagSettingsController::update">update</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#16"><abbr title="FeatureFlagHelper::registerFeatureFlags">registerFeatureFlags</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#45"><abbr title="FeatureFlagHelper::getAndSetValue">getAndSetValue</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ExampleFeatureProvider.php.html#35"><abbr title="ExampleFeatureProvider::registerRoutes">registerRoutes</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#25"><abbr title="FeatureFlagSettingsController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#44"><abbr title="FeatureFlagSettingsController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FeatureFlagSettingsController.php.html#71"><abbr title="FeatureFlagSettingsController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FeatureFlagsForJavascript.php.html#7"><abbr title="FeatureFlagsForJavascript::get">get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="FeatureFlagHelper.php.html#34"><abbr title="FeatureFlagHelper::transformFeatures">transformFeatures</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="World.php.html#55"><abbr title="World::userName">userName</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 5.2.2-2-gc3a4de8</a> using <a href="https://secure.php.net/" target="_top">PHP 7.1.8</a> with <a href="https://xdebug.org/">Xdebug 2.5.5</a> and <a href="https://phpunit.de/">PHPUnit 6.4-g4f04628c5</a> at Wed Aug 23 1:06:25 UTC 2017.</small>
+    </p>
+   </footer>
+  </div>
+  <script src=".js/jquery.min.js" type="text/javascript"></script>
+  <script src=".js/bootstrap.min.js" type="text/javascript"></script>
+  <script src=".js/holder.min.js" type="text/javascript"></script>
+  <script src=".js/d3.min.js" type="text/javascript"></script>
+  <script src=".js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([6,0,0,0,0,0,0,0,0,1,0,4], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([25,0,0,0,0,0,0,1,0,0,0,21], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"AddExampleFeaturesTableSeeder.php.html#7\">AddExampleFeaturesTableSeeder<\/a>"],[100,1,"<a href=\"ExampleController.php.html#13\">ExampleController<\/a>"],[0,5,"<a href=\"ExampleFeatureProvider.php.html#7\">ExampleFeatureProvider<\/a>"],[0,9,"<a href=\"Feature.php.html#13\">Feature<\/a>"],[100,0,"<a href=\"FeatureFlag.php.html#7\">FeatureFlag<\/a>"],[0,12,"<a href=\"FeatureFlagSettingsController.php.html#8\">FeatureFlagSettingsController<\/a>"],[0,2,"<a href=\"FeatureFlagsForJavascript.php.html#5\">FeatureFlagsForJavascript<\/a>"],[100,18,"<a href=\"FeatureFlagsProvider.php.html#15\">FeatureFlagsProvider<\/a>"],[100,3,"<a href=\"GateOverride.php.html#16\">GateOverride<\/a>"],[87.5,11,"<a href=\"World.php.html#14\">World<\/a>"],[0,8,"<a href=\"FeatureFlagHelper.php.html#13\">FeatureFlagHelper<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"AddExampleFeaturesTableSeeder.php.html#9\">AddExampleFeaturesTableSeeder::run<\/a>"],[100,1,"<a href=\"ExampleController.php.html#16\">ExampleController::seeTwitterField<\/a>"],[0,1,"<a href=\"ExampleFeatureProvider.php.html#15\">ExampleFeatureProvider::boot<\/a>"],[0,1,"<a href=\"ExampleFeatureProvider.php.html#30\">ExampleFeatureProvider::register<\/a>"],[0,2,"<a href=\"ExampleFeatureProvider.php.html#35\">ExampleFeatureProvider::registerRoutes<\/a>"],[0,1,"<a href=\"ExampleFeatureProvider.php.html#42\">ExampleFeatureProvider::publishMigrations<\/a>"],[0,1,"<a href=\"Feature.php.html#21\">Feature::configValue<\/a>"],[0,1,"<a href=\"Feature.php.html#29\">Feature::uaid<\/a>"],[0,1,"<a href=\"Feature.php.html#37\">Feature::userId<\/a>"],[0,1,"<a href=\"Feature.php.html#46\">Feature::userName<\/a>"],[0,1,"<a href=\"Feature.php.html#56\">Feature::inGroup<\/a>"],[0,1,"<a href=\"Feature.php.html#65\">Feature::isAdmin<\/a>"],[0,1,"<a href=\"Feature.php.html#73\">Feature::isInternalRequest<\/a>"],[0,1,"<a href=\"Feature.php.html#81\">Feature::urlFeatures<\/a>"],[0,1,"<a href=\"Feature.php.html#92\">Feature::log<\/a>"],[0,1,"<a href=\"FeatureFlagSettingsController.php.html#11\">FeatureFlagSettingsController::getSettings<\/a>"],[0,1,"<a href=\"FeatureFlagSettingsController.php.html#18\">FeatureFlagSettingsController::create<\/a>"],[0,2,"<a href=\"FeatureFlagSettingsController.php.html#25\">FeatureFlagSettingsController::store<\/a>"],[0,1,"<a href=\"FeatureFlagSettingsController.php.html#39\">FeatureFlagSettingsController::show<\/a>"],[0,2,"<a href=\"FeatureFlagSettingsController.php.html#44\">FeatureFlagSettingsController::edit<\/a>"],[0,3,"<a href=\"FeatureFlagSettingsController.php.html#55\">FeatureFlagSettingsController::update<\/a>"],[0,2,"<a href=\"FeatureFlagSettingsController.php.html#71\">FeatureFlagSettingsController::destroy<\/a>"],[0,2,"<a href=\"FeatureFlagsForJavascript.php.html#7\">FeatureFlagsForJavascript::get<\/a>"],[100,1,"<a href=\"FeatureFlagsProvider.php.html#25\">FeatureFlagsProvider::boot<\/a>"],[100,1,"<a href=\"FeatureFlagsProvider.php.html#51\">FeatureFlagsProvider::register<\/a>"],[100,3,"<a href=\"FeatureFlagsProvider.php.html#56\">FeatureFlagsProvider::registerRoutes<\/a>"],[100,1,"<a href=\"FeatureFlagsProvider.php.html#65\">FeatureFlagsProvider::registerViewFiles<\/a>"],[100,3,"<a href=\"FeatureFlagsProvider.php.html#70\">FeatureFlagsProvider::injectLinks<\/a>"],[100,2,"<a href=\"FeatureFlagsProvider.php.html#75\">FeatureFlagsProvider::anonymousFunction:75#293<\/a>"],[100,1,"<a href=\"FeatureFlagsProvider.php.html#89\">FeatureFlagsProvider::publishMigrations<\/a>"],[100,1,"<a href=\"FeatureFlagsProvider.php.html#96\">FeatureFlagsProvider::publishViews<\/a>"],[100,2,"<a href=\"FeatureFlagsProvider.php.html#103\">FeatureFlagsProvider::defineFeatureFlagGate<\/a>"],[100,2,"<a href=\"FeatureFlagsProvider.php.html#105\">FeatureFlagsProvider::anonymousFunction:105#478<\/a>"],[100,1,"<a href=\"FeatureFlagsProvider.php.html#122\">FeatureFlagsProvider::publishesConfiguration<\/a>"],[100,3,"<a href=\"GateOverride.php.html#19\">GateOverride::callBeforeCallbacks<\/a>"],[100,1,"<a href=\"World.php.html#24\">World::configValue<\/a>"],[100,1,"<a href=\"World.php.html#34\">World::uaid<\/a>"],[100,2,"<a href=\"World.php.html#42\">World::userId<\/a>"],[66.66666666666666,2,"<a href=\"World.php.html#55\">World::userName<\/a>"],[100,1,"<a href=\"World.php.html#71\">World::inGroup<\/a>"],[100,1,"<a href=\"World.php.html#80\">World::isAdmin<\/a>"],[100,1,"<a href=\"World.php.html#91\">World::isInternalRequest<\/a>"],[100,1,"<a href=\"World.php.html#101\">World::urlFeatures<\/a>"],[100,1,"<a href=\"World.php.html#114\">World::log<\/a>"],[0,3,"<a href=\"FeatureFlagHelper.php.html#16\">FeatureFlagHelper::registerFeatureFlags<\/a>"],[0,2,"<a href=\"FeatureFlagHelper.php.html#34\">FeatureFlagHelper::transformFeatures<\/a>"],[0,3,"<a href=\"FeatureFlagHelper.php.html#45\">FeatureFlagHelper::getAndSetValue<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

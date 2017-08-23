@@ -4,7 +4,6 @@ namespace AlfredNutileInc\LaravelFeatureFlags;
 
 class FeatureFlagsForJavascript
 {
-
     public static function get()
     {
         $flags = FeatureFlag::all();

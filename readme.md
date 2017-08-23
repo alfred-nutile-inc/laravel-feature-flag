@@ -1,5 +1,12 @@
 # Feature Flags In Laravel
 
+
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Build Status][ico-travis]][link-travis]
+[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Quality Score][ico-code-quality]][link-code-quality]
+
+
   * [Overview](#overview)
   * [Installing](#installing)
   * [Usage](#usage)
@@ -214,3 +221,18 @@ Then from there factory out your additions and state then reregister the world
   * Cache of the FeatureFlag Settings and update Cache on Change
   * Show how it works in the menu and other areas eg include and Provider
 
+
+
+[ico-version]: https://img.shields.io/packagist/v/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/alfred-nutile-inc/laravel-feature-flag/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/alfred-nutile-inc/laravel-feature-flag
+[link-travis]: https://travis-ci.org/alfred-nutile-inc/laravel-feature-flag
+[link-scrutinizer]: https://scrutinizer-ci.com/g/alfred-nutile-inc/laravel-feature-flag/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/alfred-nutile-inc/laravel-feature-flag
+[link-downloads]: https://packagist.org/packages/alfred-nutile-inc/laravel-feature-flag
+[link-author]: https://github.com/alfred-nutile-inc

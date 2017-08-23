@@ -6,6 +6,12 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Class FeatureFlagsProvider
+ * @package AlfredNutileInc\LaravelFeatureFlags
+ * @codeCoverageIgnore
+ * Most of this is default Laravel provider setup
+ */
 class FeatureFlagsProvider extends ServiceProvider
 {
 
@@ -32,7 +38,7 @@ class FeatureFlagsProvider extends ServiceProvider
 
         $this->publishViews();
 
-        $this->registerPolicies($gate);
+        $this->registerPolicies();
 
         $this->defineFeatureFlagGate($gate);
     }
@@ -49,8 +55,10 @@ class FeatureFlagsProvider extends ServiceProvider
 
     private function registerRoutes()
     {
-        if (! $this->app->routesAreCached()) {
-            require __DIR__ . '/routes.php';
+        if (method_exists($this->app, 'routesAreCached')) {
+            if (! $this->app->routesAreCached()) {
+                require __DIR__ . '/routes.php';
+            }
         }
     }
 
@@ -61,19 +69,25 @@ class FeatureFlagsProvider extends ServiceProvider
 
     private function injectLinks()
     {
-        view()->composer(
-            'layouts.default',
-            function ($view) {
-                if ($view->offsetExists('links')) {
-                    $links_original = $view->offsetGet('links');
-                    $links = [
-                    ['title' => 'Feature Flags', 'url' => route('laravel-feature-flag.index'), 'icon' => 'flag-o']
-                    ];
+        if (config('laravel-feature-flag.add_link_to_menu', false)) {
+            view()->composer(
+                config('laravel-feature-flag.default_view', 'layouts.default'),
+                function ($view) {
+                    if ($view->offsetExists('links')) {
+                        $links_original = $view->offsetGet('links');
+                        $links = [
+                            [
+                                'title' => 'Feature Flags',
+                                'url' => route('laravel-feature-flag.index'),
+                                'icon' => 'flag-o'
+                            ]
+                        ];
 
-                    $view->with('links', array_merge($links_original, $links));
+                        $view->with('links', array_merge($links_original, $links));
+                    }
                 }
-            }
-        );
+            );
+        }
     }
 
     private function publishMigrations()

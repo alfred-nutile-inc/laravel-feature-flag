@@ -14,6 +14,8 @@ return [
     */
 
     'route_middleware' => 'auth',
+    'default_view' => 'layouts.default',
+    'add_link_to_menu' => false
 
     // Example with multiple middleware:
     // 'route_middleware' => "['auth', 'custom_middleware']",

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Config;
 
+/**
+ * @codeCoverageIgnore
+ */
 Route::group(['middleware' => Config::get('laravel-feature-flag.route_middleware')], function () {
     Route::get(
         'admin/feature_flags',
