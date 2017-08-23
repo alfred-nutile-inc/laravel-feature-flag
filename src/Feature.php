@@ -8,7 +8,6 @@
 
 namespace AlfredNutileInc\LaravelFeatureFlags;
 
-
 use Feature\Contracts\World;
 
 class Feature implements World

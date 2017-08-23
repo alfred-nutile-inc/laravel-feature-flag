@@ -161,6 +161,8 @@ There is a dummy route called `/admin/feature_flags/example` that you can visit 
 <a name=testing></a>
 ## Testing
 
+> [Helper Package](https://github.com/orchestral/testbench)
+
 This Library pulls in `jowy/feature` and that library has tests. Other than that the there is the settings page which I do have some Laravel tests for that you can run once the package is installed.
 
 Also if you are trying to test the use of it in your work you can use the helper trait in your test class 

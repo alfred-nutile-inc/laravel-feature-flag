@@ -4,7 +4,8 @@ namespace AlfredNutileInc\LaravelFeatureFlags;
 
 use Illuminate\Support\ServiceProvider;
 
-class ExampleFeatureProvider extends ServiceProvider {
+class ExampleFeatureProvider extends ServiceProvider
+{
 
     /**
      * Register bindings in the container.

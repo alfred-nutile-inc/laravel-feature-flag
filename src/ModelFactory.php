@@ -6,4 +6,3 @@ $factory->define(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class, functi
         'variants' => []
     ];
 });
-

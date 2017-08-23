@@ -18,5 +18,4 @@ class ExampleController extends Controller
         \Auth::login($user);
         return view('twitter::full_page_twitter_show', compact('user'));
     }
-
 }

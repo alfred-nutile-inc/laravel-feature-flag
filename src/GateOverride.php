@@ -21,9 +21,5 @@ class GateOverride extends GateFoundation
                 return $result;
             }
         }
-
     }
-
-
-
 }

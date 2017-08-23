@@ -11,5 +11,4 @@ class FeatureFlag extends Model
     ];
 
     public $timestamps = false;
-
 }

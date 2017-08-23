@@ -24,17 +24,14 @@ class FeatureFlagSettingsController extends Controller
 
     public function store(Request $request)
     {
-        try
-        {
+        try {
             $flag = new FeatureFlag();
             $flag->key = $request->input('key');
             $flag->variants = $request->input('variants');
             $flag->save();
 
             return redirect()->route('laravel-feature-flag.index')->withMessage("Created Feature");
-        }
-        catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             return redirect()->route('laravel-feature-flag.index')->withMessage("Could not find feature flag");
         }
     }
@@ -46,48 +43,44 @@ class FeatureFlagSettingsController extends Controller
 
     public function edit($id)
     {
-        try
-        {
+        try {
             $flag = FeatureFlag::findOrFail($id);
 
             return view('laravel-feature-flag::edit', compact('flag'));
-        }
-        catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             return redirect()->route('laravel-feature-flag.index')->withMessage("Could not find feature flag");
         }
     }
 
-   public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        try
-        {
+        try {
             $flag = FeatureFlag::findOrFail($id);
 
             $flag->variants     = ($request->input('variants')) ? json_decode($request->input('variants'), true) : null;
             $flag->save();
 
-            return redirect()->route('laravel-feature-flag.index')->withMessage(sprintf("Feature Flag Updated %d", $id));
-        }
-        catch(\Exception $e)
-        {
+            return redirect()->route(
+                'laravel-feature-flag.index'
+            )->withMessage(sprintf("Feature Flag Updated %d", $id));
+        } catch (\Exception $e) {
             return redirect()->route('laravel-feature-flag.index')->withMessage("Could not find feature flag");
         }
     }
 
     public function destroy($id)
     {
-        try
-        {
+        try {
             $flag = FeatureFlag::findOrFail($id);
 
             $flag->delete();
 
-            return redirect()->route('laravel-feature-flag.index')->withMessage(sprintf("Feature Flag Updated %d", $id));
-        }
-        catch(\Exception $e)
-        {
-            return redirect()->route('laravel-feature-flag.index')->withMessage("Could not find feature flag");
+            return redirect()->route(
+                'laravel-feature-flag.index'
+            )->withMessage(sprintf("Feature Flag Updated %d", $id));
+        } catch (\Exception $e) {
+            return redirect()->route('laravel-feature-flag.index')
+                ->withMessage("Could not find feature flag");
         }
     }
 }

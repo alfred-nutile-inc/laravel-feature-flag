@@ -15,12 +15,10 @@ trait FeatureFlagHelper
 
     public function registerFeatureFlags()
     {
-        try
-        {
+        try {
             $features = FeatureFlag::all()->toArray();
 
-            foreach($features as $key => $value)
-            {
+            foreach ($features as $key => $value) {
                 $features = $this->transformFeatures($features, $value, $key);
                 unset($features[$key]);
             }
@@ -28,9 +26,7 @@ trait FeatureFlagHelper
             $world = new World();
 
             \Feature\Feature::create($world, $features);
-        }
-        catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             Log::info(sprintf("Silent Failure of Feature Flag %s", $e->getMessage()));
         }
     }
@@ -39,9 +35,8 @@ trait FeatureFlagHelper
     {
         $features[$value['key']] = $this->getAndSetValue($value);
 
-        if(isset($value['variants']['users']))
-        {
-          $features[$value['key']]['users'] = $value['variants']['users'];
+        if (isset($value['variants']['users'])) {
+            $features[$value['key']]['users'] = $value['variants']['users'];
         }
 
         return $features;
@@ -49,9 +44,10 @@ trait FeatureFlagHelper
 
     private function getAndSetValue($value)
     {
-      if($value['variants'] == 'on' or $value['variants'] == 'off')
-        return $value['variants'];
+        if ($value['variants'] == 'on' or $value['variants'] == 'off') {
+            return $value['variants'];
+        }
 
-      return $value;
+        return $value;
     }
 }
