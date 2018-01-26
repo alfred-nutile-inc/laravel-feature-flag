@@ -7,12 +7,7 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Log;
 use AlfredNutileInc\LaravelFeatureFlags\ImportCommand;
 
-/**
- * Class FeatureFlagsProvider
- * @package AlfredNutileInc\LaravelFeatureFlags
- * @codeCoverageIgnore
- * Most of this is default Laravel provider setup
- */
+
 class FeatureFlagsProvider extends ServiceProvider
 {
 
