@@ -56,7 +56,7 @@ class FeatureFlagsProvider extends ServiceProvider
     private function registerRoutes()
     {
         if (method_exists($this->app, 'routesAreCached')) {
-            if (! $this->app->routesAreCached()) {
+            if (!$this->app->routesAreCached()) {
                 require __DIR__ . '/routes.php';
             }
         }
@@ -64,7 +64,7 @@ class FeatureFlagsProvider extends ServiceProvider
 
     private function registerViewFiles()
     {
-        $this->loadViewsFrom(__DIR__.'/../views', 'laravel-feature-flag');
+        $this->loadViewsFrom(__DIR__ . '/../views', 'laravel-feature-flag');
     }
 
     private function injectLinks()
@@ -93,14 +93,14 @@ class FeatureFlagsProvider extends ServiceProvider
     private function publishMigrations()
     {
         $this->publishes([
-            __DIR__.'/../database/migrations/' => database_path('migrations')
+            __DIR__ . '/../database/migrations/' => database_path('migrations')
         ], 'migrations');
     }
 
     private function publishViews()
     {
         $this->publishes([
-            __DIR__.'/../views/' => base_path('resources/views/vendor/laravel-feature-flag')
+            __DIR__ . '/../views/' => base_path('resources/views/vendor/laravel-feature-flag')
         ], 'views');
     }
 
@@ -110,13 +110,15 @@ class FeatureFlagsProvider extends ServiceProvider
             try {
                 return \Feature\Feature::isEnabled($flag_id);
             } catch (\Exception $e) {
-                Log::info(
-                    sprintf(
-                        "FeatureFlagsProvider: error with feature flag %s. '%s'",
-                        $flag_id,
-                        $e->getMessage()
-                    )
-                );
+                if (config("laravel-feature-flag.logging")) {
+                    Log::info(
+                        sprintf(
+                            "FeatureFlagsProvider: error with feature flag %s. '%s'",
+                            $flag_id,
+                            $e->getMessage()
+                        )
+                    );
+                }
                 // Defaults to false in case of error.
                 return false;
             }
@@ -126,7 +128,7 @@ class FeatureFlagsProvider extends ServiceProvider
     private function publishesConfiguration()
     {
         $this->publishes([
-            __DIR__.'/../config/laravel-feature-flag.php' => config_path('laravel-feature-flag.php'),
+            __DIR__ . '/../config/laravel-feature-flag.php' => config_path('laravel-feature-flag.php'),
         ], 'config');
     }
 }

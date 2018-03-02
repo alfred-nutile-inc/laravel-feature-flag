@@ -15,6 +15,7 @@ return [
 
     'route_middleware' => 'auth',
     'default_view' => env("LARAVEL_FEATURE_FLAG_VIEW", 'laravel-feature-flag::default_layout'),
+    'logging' => env("LARAVEL_FEATURE_FLAG_LOGGING"),
     'add_link_to_menu' => false
 
     // Example with multiple middleware:
