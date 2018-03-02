@@ -57,7 +57,7 @@ class FeatureFlagSettingsController extends Controller
         try {
             $flag = FeatureFlag::findOrFail($id);
 
-            $flag->variants     = ($request->input('variants')) ? json_decode($request->input('variants'), true) : null;
+            $flag->variants = ($request->input('variants')) ? json_decode($request->input('variants'), true) : null;
             $flag->save();
 
             return redirect()->route(

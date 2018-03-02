@@ -11,10 +11,10 @@ return [
     | by the laravel-feature-flag package. You may pass in a string for a
     | middleware or an array for multiple middleware.
     |
-    */
+ */
 
     'route_middleware' => 'auth',
-    'default_view' => 'layouts.default',
+    'default_view' => env("LARAVEL_FEATURE_FLAG_VIEW", 'laravel-feature-flag::default_layout'),
     'add_link_to_menu' => false
 
     // Example with multiple middleware:

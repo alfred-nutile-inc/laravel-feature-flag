@@ -1,0 +1,12 @@
+
+
+Code Coverage Report:    
+  2018-03-02 12:55:05    
+                         
+ Summary:                
+  Classes:  0.00% (0/7)  
+  Methods:  7.14% (2/28) 
+  Lines:    5.07% (7/138)
+
+\AlfredNutileInc\LaravelFeatureFlags::World
+  Methods:  66.67% ( 2/ 3)   Lines:  87.50% (  7/  8)
