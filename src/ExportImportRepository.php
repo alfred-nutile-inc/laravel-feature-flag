@@ -2,7 +2,6 @@
 
 namespace AlfredNutileInc\LaravelFeatureFlags;
 
-
 class ExportImportRepository
 {
 

@@ -36,7 +36,6 @@ class ExportTest extends TestCase
                 "variants" => ['on']
             ]
         ], $results);
-
     }
 
     public function testShouldImportResults()
