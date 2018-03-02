@@ -1,43 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Test Suite" tests="14" assertions="6" errors="0" failures="0" skipped="8" time="0.833621">
-    <testsuite name="Tests\FeatureFlagTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/FeatureFlagTest.php" tests="4" assertions="0" errors="0" failures="0" skipped="4" time="0.023796">
-      <testcase name="testShouldSeeFeatureAsAdmin" class="Tests\FeatureFlagTest" classname="Tests.FeatureFlagTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/FeatureFlagTest.php" line="32" assertions="0" time="0.019028">
-        <skipped/>
-      </testcase>
-      <testcase name="testShouldNotSeeFeatureAsAdmin" class="Tests\FeatureFlagTest" classname="Tests.FeatureFlagTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/FeatureFlagTest.php" line="58" assertions="0" time="0.001694">
-        <skipped/>
-      </testcase>
-      <testcase name="testShouldSeeFeatureOnProfile" class="Tests\FeatureFlagTest" classname="Tests.FeatureFlagTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/FeatureFlagTest.php" line="85" assertions="0" time="0.001722">
-        <skipped/>
-      </testcase>
-      <testcase name="testNotSeeTwitterOnProfilePage" class="Tests\FeatureFlagTest" classname="Tests.FeatureFlagTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/FeatureFlagTest.php" line="110" assertions="0" time="0.001352">
-        <skipped/>
-      </testcase>
-    </testsuite>
-    <testsuite name="Tests\FeatureFlagsForJavascriptTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/FeatureFlagsForJavascriptTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.209057">
-      <testcase name="testGetWithResults" class="Tests\FeatureFlagsForJavascriptTest" classname="Tests.FeatureFlagsForJavascriptTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/FeatureFlagsForJavascriptTest.php" line="18" assertions="0" time="0.209057">
-        <skipped/>
-      </testcase>
-    </testsuite>
-    <testsuite name="Tests\SettingsPageTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/SettingsPageTest.php" tests="3" assertions="0" errors="0" failures="0" skipped="3" time="0.005325">
-      <testcase name="testShouldSeeSettings" class="Tests\SettingsPageTest" classname="Tests.SettingsPageTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/SettingsPageTest.php" line="30" assertions="0" time="0.001597">
-        <skipped/>
-      </testcase>
-      <testcase name="testCanEditSettings" class="Tests\SettingsPageTest" classname="Tests.SettingsPageTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/SettingsPageTest.php" line="44" assertions="0" time="0.001289">
-        <skipped/>
-      </testcase>
-      <testcase name="testCanCreateSettings" class="Tests\SettingsPageTest" classname="Tests.SettingsPageTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/SettingsPageTest.php" line="64" assertions="0" time="0.002439">
-        <skipped/>
-      </testcase>
-    </testsuite>
-    <testsuite name="Tests\WorldTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/WorldTest.php" tests="6" assertions="6" errors="0" failures="0" skipped="0" time="0.595443">
-      <testcase name="testUserIdFalse" class="Tests\WorldTest" classname="Tests.WorldTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/WorldTest.php" line="20" assertions="1" time="0.107410"/>
-      <testcase name="testUserIdTrue" class="Tests\WorldTest" classname="Tests.WorldTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/WorldTest.php" line="27" assertions="1" time="0.142114"/>
-      <testcase name="testUserNameTrue" class="Tests\WorldTest" classname="Tests.WorldTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/WorldTest.php" line="38" assertions="1" time="0.095426"/>
-      <testcase name="testUserNameFalse" class="Tests\WorldTest" classname="Tests.WorldTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/WorldTest.php" line="49" assertions="1" time="0.084961"/>
-      <testcase name="testIsAdmin" class="Tests\WorldTest" classname="Tests.WorldTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/WorldTest.php" line="61" assertions="1" time="0.079033"/>
-      <testcase name="testIsNotAdmin" class="Tests\WorldTest" classname="Tests.WorldTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/WorldTest.php" line="71" assertions="1" time="0.086499"/>
-    </testsuite>
+  <testsuite name="Tests\ExportTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/ExportTest.php" tests="4" assertions="12" errors="0" failures="0" skipped="0" time="2.280087">
+    <testcase name="testShouldExportFeatureFlags" class="Tests\ExportTest" classname="Tests.ExportTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/ExportTest.php" line="17" assertions="2" time="0.800515"/>
+    <testcase name="testShouldImportResults" class="Tests\ExportTest" classname="Tests.ExportTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/ExportTest.php" line="42" assertions="3" time="0.484612"/>
+    <testcase name="testShouldNotDuplicateResults" class="Tests\ExportTest" classname="Tests.ExportTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/ExportTest.php" line="59" assertions="3" time="0.492268"/>
+    <testcase name="testUpdatesExistingResult" class="Tests\ExportTest" classname="Tests.ExportTest" file="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/tests/ExportTest.php" line="82" assertions="4" time="0.502692"/>
   </testsuite>
 </testsuites>

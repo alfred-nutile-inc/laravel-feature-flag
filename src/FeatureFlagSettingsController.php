@@ -8,11 +8,19 @@ use Illuminate\Routing\Controller;
 class FeatureFlagSettingsController extends Controller
 {
 
-    public function getSettings()
+    public function getSettings(ExportImportRepository $repo)
     {
-        $settings = FeatureFlag::all();
-        $token = csrf_token();
-        return view('laravel-feature-flag::settings', compact('settings', 'token'));
+        try {
+            $settings = FeatureFlag::all();
+            $token = csrf_token();
+            $exports = $repo->export();
+            return view('laravel-feature-flag::settings', compact('settings', 'token', 'exports'));
+        } catch (\Exception $e) {
+            \Log::error("Error getting settings");
+            \Log::error($e);
+
+            return redirect("/")->withMessage("Error visiting Settings page");
+        }
     }
 
     public function create(Request $request)
@@ -20,6 +28,19 @@ class FeatureFlagSettingsController extends Controller
         $flag = new FeatureFlag();
 
         return view('laravel-feature-flag::create', compact('flag'));
+    }
+
+    public function import(Request $request, ExportImportRepository $repo)
+    {
+        try {
+            $repo->import(json_decode($request->features, true));
+
+            return redirect()->route('laravel-feature-flag.index')->withMessage("Created and or Updated Features");
+        } catch (\Exception $e) {
+            \Log::error("Error importing feature flags");
+            \Log::error($e);
+            return redirect()->route('laravel-feature-flag.index')->withMessage("Could not import feature flags");
+        }
     }
 
     public function store(Request $request)

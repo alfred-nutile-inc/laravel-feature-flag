@@ -26,12 +26,21 @@
                         <b>LARAVEL_FEATURE_FLAG_VIEW=your_default_layout</b>
                         to use that one. See more in the package readme.
                     </div>
-                    @yield('content')
+
+                    @if(Session::get('message'))
+                    <div class="alert alert-success">
+                        <p>{{ Session::get('message') }}</p>
+                    </div>
+                    @endif @yield('content')
                 </div>
             </div>
         </div>
     </div>
 
 </body>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"></script>
 
 </html>

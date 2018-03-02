@@ -7,73 +7,101 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
+use AlfredNutileInc\LaravelFeatureFlags\ExportImportRepository;
+use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
 
-class SettingsPageTest extends TestCase
+class ExportTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseMigrations, DatabaseTransactions;
 
-    private $user;
-
-    public function setUp()
-    {
-        $this->markTestSkipped(
-            "We need to figure out how to do these UI tests outside of laravel OR
-        during the travis build setup a laravel up to run this in. 
-        More later https://github.com/orchestral/testbench/blob/3.5/README.md"
-        );
-        parent::setUp();
-
-        $user = factory(\App\User::class)->create(['is_admin' => 1]);
-        $this->user = $user;
-    }
-
-    public function testShouldSeeSettings()
+    public function testShouldExportFeatureFlags()
     {
 
         factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
-                'key' => 'add-twitter-field',
-                'variants' => [ 'users' => [$this->user->email]]
+                'key' => 'foo',
+                'variants' => ["on"]
             ]
         );
 
-        $this->actingAs($this->user)->visit('/admin/feature_flags')
-            ->see('Create Feature Flag')->see('add-twitter-field');
-    }
+        $repo = new ExportImportRepository();
 
-    public function testCanEditSettings()
-    {
-        $key = str_random();
+        $results = $repo->export();
 
-        $flag = factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        $this->assertNotNull($results);
+
+        $this->assertEquals([
             [
-                'key' => $key,
-                'variants' => [ 'users' => [$this->user->email]]
+                'key' => "foo",
+                "variants" => ['on']
+            ]
+        ], $results);
+
+    }
+
+    public function testShouldImportResults()
+    {
+        $exported = \File::get(__DIR__ . '/fixtures/exported.json');
+        $exported = json_decode($exported, true);
+        $repo = new ExportImportRepository();
+
+        $results = $repo->import($exported);
+
+        $ff = FeatureFlag::all();
+
+        $this->assertNotNull($ff);
+
+        $this->assertCount(1, $ff);
+
+        $this->assertEquals("foo", $ff->first()->key);
+    }
+
+    public function testShouldNotDuplicateResults()
+    {
+        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+            [
+                'key' => 'foo',
+                'variants' => ["on"]
             ]
         );
 
-        $variant = str_random();
+        $exported = \File::get(__DIR__ . '/fixtures/exported.json');
+        $exported = json_decode($exported, true);
+        $repo = new ExportImportRepository();
 
-        $this->actingAs($this->user)->visit('admin/feature_flags/' . $flag->id . '/edit')
-            ->type("\"$variant\"", 'variants')
-            ->press('Save')
-            ->see('Set your feature flags')
-            ->see($variant);
+        $results = $repo->import($exported);
+
+        $ff = FeatureFlag::all();
+        $this->assertNotNull($ff);
+
+        $this->assertCount(1, $ff);
+
+        $this->assertEquals("foo", $ff->first()->key);
     }
 
-    public function testCanCreateSettings()
+    public function testUpdatesExistingResult()
     {
+        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+            [
+                'key' => 'foo',
+                'variants' => ["off"]
+            ]
+        );
 
+        $exported = \File::get(__DIR__ . '/fixtures/exported.json');
+        $exported = json_decode($exported, true);
+        $repo = new ExportImportRepository();
 
-        $key = str_random();
-        $variant = str_random();
+        $results = $repo->import($exported);
 
-        $this->actingAs($this->user)->visit('admin/feature_flags/create')
-            ->type($key, 'key')
-            ->type($variant, 'variants')
-            ->press('Save')
-            ->see('Set your feature flags')
-            ->see($key)
-            ->see($variant);
+        $ff = FeatureFlag::all();
+
+        $this->assertNotNull($ff);
+
+        $this->assertCount(1, $ff);
+
+        $this->assertEquals("foo", $ff->first()->key);
+
+        $this->assertEquals("on", $ff->first()->variants[0]);
     }
 }

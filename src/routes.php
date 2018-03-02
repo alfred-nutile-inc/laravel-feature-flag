@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Config;
-
 /**
  * @codeCoverageIgnore
  */
-Route::group(['middleware' => Config::get('laravel-feature-flag.route_middleware')], function () {
+Route::group(['middleware' => config('laravel-feature-flag.route_middleware')], function () {
     Route::get(
         'admin/feature_flags',
         [
@@ -25,6 +23,13 @@ Route::group(['middleware' => Config::get('laravel-feature-flag.route_middleware
         [
             'uses' => '\AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@create',
             'as' => 'laravel-feature-flag.create_form'
+        ]
+    );
+    Route::post(
+        'admin/feature_flags/imports',
+        [
+            'uses' => '\AlfredNutileInc\LaravelFeatureFlags\FeatureFlagSettingsController@import',
+            'as' => 'laravel-feature-flag.imports'
         ]
     );
     Route::post(

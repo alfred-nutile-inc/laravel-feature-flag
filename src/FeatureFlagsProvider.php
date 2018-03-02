@@ -41,6 +41,8 @@ class FeatureFlagsProvider extends ServiceProvider
         $this->registerPolicies();
 
         $this->defineFeatureFlagGate($gate);
+
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     /**
@@ -51,15 +53,16 @@ class FeatureFlagsProvider extends ServiceProvider
     public function register()
     {
         $this->registerViewFiles();
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/laravel-feature-flag.php',
+            'laravel-feature-flag'
+        );
     }
 
     private function registerRoutes()
     {
-        if (method_exists($this->app, 'routesAreCached')) {
-            if (!$this->app->routesAreCached()) {
-                require __DIR__ . '/routes.php';
-            }
-        }
+        $this->loadRoutesFrom(__DIR__ . '/routes.php');
     }
 
     private function registerViewFiles()
