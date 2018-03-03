@@ -20,9 +20,8 @@ before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 
 script:
+  - composer check-style
   - vendor/bin/phpcs --standard=psr2 src/
-# will turn this on shortly
-#  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
   - vendor/bin/phpunit
 
 after_script:
