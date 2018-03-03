@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1520010052">
-  <project timestamp="1520010052">
+<coverage generated="1520044124">
+  <project timestamp="1520044124">
     <package name="AlfredNutileInc\LaravelFeatureFlags">
       <file name="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/src/AddExampleFeaturesTableSeeder.php">
         <class name="AlfredNutileInc\LaravelFeatureFlags\AddExampleFeaturesTableSeeder" namespace="AlfredNutileInc\LaravelFeatureFlags">
@@ -56,17 +56,17 @@
         <class name="AlfredNutileInc\LaravelFeatureFlags\ExportImportRepository" namespace="AlfredNutileInc\LaravelFeatureFlags">
           <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
         </class>
-        <line num="9" type="method" name="export" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="11" type="stmt" count="1"/>
-        <line num="13" type="stmt" count="1"/>
-        <line num="16" type="method" name="import" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="8" type="method" name="export" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="10" type="stmt" count="1"/>
+        <line num="12" type="stmt" count="1"/>
+        <line num="15" type="method" name="import" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="17" type="stmt" count="3"/>
         <line num="18" type="stmt" count="3"/>
         <line num="19" type="stmt" count="3"/>
         <line num="20" type="stmt" count="3"/>
-        <line num="21" type="stmt" count="3"/>
+        <line num="22" type="stmt" count="3"/>
         <line num="23" type="stmt" count="3"/>
-        <line num="24" type="stmt" count="3"/>
-        <metrics loc="25" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+        <metrics loc="24" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
       </file>
       <file name="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/src/Feature.php">
         <class name="AlfredNutileInc\LaravelFeatureFlags\Feature" namespace="AlfredNutileInc\LaravelFeatureFlags">
@@ -278,6 +278,6 @@
     <file name="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/src/routes.php">
       <metrics loc="56" ncloc="53" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="15" loc="770" ncloc="585" classes="8" methods="31" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="163" coveredstatements="19" elements="194" coveredelements="23"/>
+    <metrics files="15" loc="769" ncloc="584" classes="8" methods="31" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="163" coveredstatements="19" elements="194" coveredelements="23"/>
   </project>
 </coverage>
