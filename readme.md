@@ -20,9 +20,9 @@
 <a name=overview></a>
 ## Overview
 
-You can find a comprehensive blog post about [this library here](https://alfrednutile.info/posts/175). This project is a work in progress.
+You can find a comprehensive blog post about [this library here](https://alfrednutile.info/posts/175).
 
-We are working on using FeatureFlags or Toggles in our applications. For one we are aiming to do all our work on mainline branch at all times so this would be a key coding discipline to use FeatureFlags so we can hide a feature in progress knowing it will not interfere with the application. For example if a hotfix or another feature is ready to go to production we can push that with no worries of the in progress feature.
+We have, for about 2+ years, been using FeatureFlags or Toggles in our applications. For one we are aiming to do all our work on mainline branch at all times so this would be a key coding discipline to use FeatureFlags so we can hide a feature in progress knowing it will not interfere with the application. For example if a hotfix or another feature is ready to go to production we can push that with no worries of the in progress feature.
 
 At the core we use this library [Atriedes/feature](https://github.com/Atriedes/feature) as it has the logic needed to consider common feature flag states eg user, users, on, off, groups, admin, internal, random etc. However, we are also mixing in some nice Laravel [Authorization](https://laravel.com/docs/5.2/authorization) features so you can do things like:
 
@@ -30,7 +30,7 @@ In a blade template:
 
 ~~~php
 @can('feature-flag', 'add-twitter-field')
-<!-- code here -->
+    <!-- code here -->
 @endcan
 ~~~
 
@@ -61,6 +61,16 @@ JavaScript::Put(
         );
 ~~~
 
+You can manage the FeatureFlags at the Settings UI:
+
+![](https://dl.dropboxusercontent.com/s/rnzcovub8alke0t/ff_settings.png?dl=0)
+
+As you see above this area can easily be placed into your main layout if needed.
+
+There also is a means to Export and Import settings.
+
+
+As the article notes try to limit your flags to 3 active ones at a time removing those that pass QA and are live. Maybe leaving features that might not last too long, e.g. just not being used or not popular, on longer.
 
 
 <a name=installing></a>
@@ -82,7 +92,7 @@ Require the package using composer:
 composer require alfred-nutile-inc/laravel-feature-flag
 ~~~
 
-Add the following to your config/app.php providers array:
+Add the following to your `config/app.php` providers array:
 
 ~~~
 AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider::class,
@@ -106,7 +116,7 @@ This package creates a number of routes. They can be overridden by publishing th
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
 ~~~
 
-This will then place the files in `resources/vendors/laravel-feature-flags`. Just note that the views `@extends('layouts.default')` so if yours differs you will need to make an adjustment to the published views files.
+This will then place the files in `resources/vendors/laravel-feature-flags`. Just note that the views `@extends(config("laravel-feature-flag.default_view")) @section('content')` you can set this in the published config, see below.
 
 Next, publish the configuration:
 
@@ -118,7 +128,7 @@ Important: The routes detault to being projected by the 'auth' middleware but yo
 
 
 
-Make sure to set the `default_view` as well for the layout.
+Make sure to set the `default_view` as well for the layout by updating the file or your `.env`.
 
 `config/laravel-feature-flag.php`
 
@@ -252,6 +262,7 @@ Then from there factory out your additions and state then reregister the world
   * Use Model Events to do that level of work
   * Cache of the FeatureFlag Settings and update Cache on Change
   * Show how it works in the menu and other areas eg include and Provider
+  * Add a way to measure when a feature is used
 
 
 
