@@ -1,0 +1,25 @@
+# Changelog
+
+All notable changes to `alfred-nutile-inc/laravel-feature-flag` will be documented in this file.
+
+Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+
+## NEXT - 2018-03-02
+
+### Added
+- Import Export of existing or new FeatureFlags
+- Config settings for default layout
+- Better default layout if not included in app theme
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Less logging
+- Fixed Middleware settings
+
+### Removed
+- Nothing
+
+### Security
+- Nothing
