@@ -11,6 +11,8 @@
   * [Installing](#installing)
   * [Usage](#usage)
   * [Usage Non Auth](#usage-non-auth)
+  * [Import Export](#ie)
+  * [Command Line](#command)
   * [Example](#example)
   * [Testing](#testing)
   * [Todo](#todo)
@@ -154,6 +156,25 @@ $feature->save();
 ~~~
 
 Now when the FeatureFlag Provider instantiates it will set this as the "World" state and you can access it via the isEnabled "on" being true and "off" being false.
+
+
+<a name="ie"></a>
+## Import Export
+
+The UI has an import export feature.
+This will allow you to easily move settings to a new build or environment.
+Just visit the settings page and you will see the export import tab.
+
+<a name="command"></a>
+## Command Line
+
+You can run a command:
+
+```
+php artisan ff:import_features storage/exported.json
+```
+
+To import an exported file, <a name="#ie">Import Export</a> for more info.
 
 <a name=example></a>
 ## Demo / Example

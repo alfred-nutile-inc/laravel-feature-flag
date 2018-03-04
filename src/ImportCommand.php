@@ -52,6 +52,5 @@ class ImportCommand extends Command
             \Log::error(sprintf("Error: %s", $e->getMessage()));
             $this->error("Error getting file and importing see logs");
         }
-
     }
 }
