@@ -5,6 +5,7 @@ namespace AlfredNutileInc\LaravelFeatureFlags;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Log;
+use AlfredNutileInc\LaravelFeatureFlags\ImportCommand;
 
 /**
  * Class FeatureFlagsProvider
@@ -43,6 +44,12 @@ class FeatureFlagsProvider extends ServiceProvider
         $this->defineFeatureFlagGate($gate);
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ImportCommand::class
+            ]);
+        }
     }
 
     /**
