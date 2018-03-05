@@ -76,16 +76,6 @@ As the article notes try to limit your flags to 3 active ones at a time removing
 <a name=installing></a>
 ## Installing
 
-Set your `composer.json` to the following to avoid composer error messages:
-
-~~~
-"config": {
-        ....
-    },
-    "minimum-stability": "dev"
-}
-~~~
-
 Require the package using composer:
 
 ~~~

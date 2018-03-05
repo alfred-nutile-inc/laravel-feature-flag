@@ -38,6 +38,11 @@
   "extra": {
     "branch-alias": {
       "dev-master": "2.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "AlfredNutileInc\\LaravelFeatureFlags\\FeatureFlagsProvider"
+      ]
     }
   },
   "scripts": {
