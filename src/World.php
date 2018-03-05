@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: alfrednutile
@@ -79,8 +80,7 @@ class World implements \Feature\Contracts\World
      */
     public function isAdmin($userId)
     {
-        $user = Auth::findOrFail($userId);
-        return $user->is_admin == 1;
+        //need to implement
     }
 
     /**
