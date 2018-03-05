@@ -115,31 +115,15 @@ class FeatureFlagsProvider extends ServiceProvider
             try {
                 return \Feature\Feature::isEnabled($flag_id);
             } catch (\Exception $e) {
-                << << <<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> turn off logging
                 if (config("laravel-feature-flag.logging")) {
                     Log::info(
                         sprintf(
                             "FeatureFlagsProvider: error with feature flag %s. '%s'",
-                             $flag_id,
-                             $e->getMessage()
+                            $flag_id,
+                            $e->getMessage()
                         )
                     );
                 }
-<<<<<<< HEAD
-=======
-                Log::info(
-                    sprintf(
-                        "FeatureFlagsProvider: error with feature flag %s. '%s'",
-                         $flag_id,
-                         $e->getMessage()
-                    )
-                );
->>>>>>> fix style work
-=======
->>>>>>> turn off logging
                 // Defaults to false in case of error.
                 return false;
             }
@@ -148,7 +132,7 @@ class FeatureFlagsProvider extends ServiceProvider
 
     private function publishesConfiguration()
     {
-         $this->publishes([
+        $this->publishes([
             __DIR__ . '/../config/laravel-feature-flag.php' => config_path('laravel-feature-flag.php'),
         ], 'config');
     }
