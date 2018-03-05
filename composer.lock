@@ -5,7 +5,11 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "017c0ac2ccbda103366b245bd41b17e3",
+=======
+    "content-hash": "5e17554755612ce1e38068943f0c52bb",
+>>>>>>> Remove extra
     "packages": [
         {
             "name": "jowy/feature",
@@ -46,11 +50,63 @@
     ],
     "packages-dev": [
         {
+<<<<<<< HEAD
 =======
     "content-hash": "32f9f6300f58adc16db2a1f12729c1f8",
     "packages": [
         {
 >>>>>>> fix style work
+=======
+            "name": "codedungeon/phpunit-result-printer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikeerickson/phpunit-pretty-result-printer.git",
+                "reference": "bfa0761f6f689d153011f3234eb5c3c65911addd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/bfa0761f6f689d153011f3234eb5c3c65911addd",
+                "reference": "bfa0761f6f689d153011f3234eb5c3c65911addd",
+                "shasum": ""
+            },
+            "require": {
+                "hassankhan/config": "^0.10.0",
+                "php": "^7.1",
+                "symfony/yaml": "^2.7|^3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.2",
+                "spatie/phpunit-watcher": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codedungeon\\PHPUnitPrettyResultPrinter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Erickson",
+                    "email": "codedungeon@gmail.com"
+                }
+            ],
+            "description": "PHPUnit Pretty Result Printer",
+            "keywords": [
+                "composer",
+                "package",
+                "phpunit",
+                "printer",
+                "result-printer"
+            ],
+            "time": "2018-03-02T23:02:26+00:00"
+        },
+        {
+>>>>>>> Remove extra
             "name": "doctrine/inflector",
             "version": "dev-master",
             "source": {
@@ -486,6 +542,63 @@
                 "test"
             ],
             "time": "2018-02-19T09:04:07+00:00"
+        },
+        {
+            "name": "hassankhan/config",
+            "version": "0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hassankhan/config.git",
+                "reference": "06ac500348af033f1a2e44dc357ca86282626d4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hassankhan/config/zipball/06ac500348af033f1a2e44dc357ca86282626d4a",
+                "reference": "06ac500348af033f1a2e44dc357ca86282626d4a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.2"
+            },
+            "suggest": {
+                "symfony/yaml": "~2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Noodlehaus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hassan Khan",
+                    "homepage": "http://hassankhan.me/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lightweight configuration file loader that supports PHP, INI, XML, JSON, and YAML files",
+            "homepage": "http://hassankhan.me/config/",
+            "keywords": [
+                "config",
+                "configuration",
+                "ini",
+                "json",
+                "microphp",
+                "unframework",
+                "xml",
+                "yaml",
+                "yml"
+            ],
+            "time": "2016-02-11T16:21:17+00:00"
         },
         {
             "name": "illuminate/support",
@@ -6464,6 +6577,64 @@
             "time": "2018-02-22T17:29:24+00:00"
         },
         {
+            "name": "symfony/yaml",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "90fbbce247c1bfc12c6618c047d62c288c79e49c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/90fbbce247c1bfc12c6618c047d62c288c79e49c",
+                "reference": "90fbbce247c1bfc12c6618c047d62c288c79e49c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "conflict": {
+                "symfony/console": "<3.4"
+            },
+            "require-dev": {
+                "symfony/console": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2018-02-22T11:40:25+00:00"
+        },
+        {
             "name": "theseer/tokenizer",
             "version": "1.1.0",
             "source": {
@@ -6878,7 +7049,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "jowy/feature": 20
+        "jowy/feature": 20,
+        "codedungeon/phpunit-result-printer": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

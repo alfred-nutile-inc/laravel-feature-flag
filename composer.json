@@ -26,9 +26,14 @@
     "jowy/feature": "dev-master"
   },
   "require-dev": {
+<<<<<<< HEAD
     "mockery/mockery": "0.9.*",
 <<<<<<< HEAD
+=======
+    "codedungeon/phpunit-result-printer": "dev-master",
+>>>>>>> Remove extra
     "illuminate/support": "<=5.5",
+    "mockery/mockery": "0.9.*",
     "orchestra/database": "<=3.5",
     "orchestra/testbench": "<=3.5",
 =======
@@ -46,6 +51,7 @@
     "branch-alias": {
       "dev-master": "2.0-dev"
 <<<<<<< HEAD
+<<<<<<< HEAD
     },
     "laravel": {
       "providers": [
@@ -53,6 +59,8 @@
       ]
 =======
 >>>>>>> fix style work
+=======
+>>>>>>> Remove extra
     }
   },
   "scripts": {

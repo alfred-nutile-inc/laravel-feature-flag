@@ -1,4 +1,7 @@
-@extends(config("laravel-feature-flag.default_view")) @section('content')
+@extends(config("laravel-feature-flag.default_view"))
+
+<!--  -->
+@section('content')
 
 <h2>Set your feature flags</h2>
 

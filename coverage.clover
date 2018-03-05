@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD:coverage.clover
 <coverage generated="1503450385">
   <project timestamp="1503450385">
+=======
+<coverage generated="1520251542">
+  <project timestamp="1520251542">
+>>>>>>> Remove extra:build/logs/clover.xml
     <package name="AlfredNutileInc\LaravelFeatureFlags">
       <file name="/Users/alfrednutile/Code/laravel-feature-flag/src/AddExampleFeaturesTableSeeder.php">
         <class name="AddExampleFeaturesTableSeeder" namespace="AlfredNutileInc\LaravelFeatureFlags">
@@ -198,11 +203,19 @@
         <line num="17" type="stmt" count="0"/>
         <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
       </file>
+<<<<<<< HEAD:coverage.clover
       <file name="/Users/alfrednutile/Code/laravel-feature-flag/src/FeatureFlagsProvider.php">
         <class name="FeatureFlagsProvider" namespace="AlfredNutileInc\LaravelFeatureFlags" fullPackage="AlfredNutileInc" package="AlfredNutileInc">
           <metrics complexity="18" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="128" ncloc="110" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+=======
+      <file name="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/src/FeatureFlagsProvider.php">
+        <class name="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" namespace="AlfredNutileInc\LaravelFeatureFlags" fullPackage="AlfredNutileInc" package="AlfredNutileInc">
+          <metrics complexity="19" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="144" ncloc="126" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+>>>>>>> Remove extra:build/logs/clover.xml
       </file>
       <file name="/Users/alfrednutile/Code/laravel-feature-flag/src/GateOverride.php">
         <class name="GateOverride" namespace="AlfredNutileInc\LaravelFeatureFlags" fullPackage="AlfredNutileInc" package="AlfredNutileInc">
@@ -210,8 +223,32 @@
         </class>
         <metrics loc="29" ncloc="23" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
+<<<<<<< HEAD:coverage.clover
       <file name="/Users/alfrednutile/Code/laravel-feature-flag/src/World.php">
         <class name="World" namespace="AlfredNutileInc\LaravelFeatureFlags">
+=======
+      <file name="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/src/ImportCommand.php">
+        <class name="AlfredNutileInc\LaravelFeatureFlags\ImportCommand" namespace="AlfredNutileInc\LaravelFeatureFlags">
+          <metrics complexity="3" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="2" elements="13" coveredelements="3"/>
+        </class>
+        <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="35" type="stmt" count="4"/>
+        <line num="36" type="stmt" count="4"/>
+        <line num="43" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <metrics loc="56" ncloc="35" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="2" elements="13" coveredelements="3"/>
+      </file>
+      <file name="/Users/alfrednutile/Code/virtual-fiddler/workbench/laravel-feature-flag/src/World.php">
+        <class name="AlfredNutileInc\LaravelFeatureFlags\World" namespace="AlfredNutileInc\LaravelFeatureFlags">
+>>>>>>> Remove extra:build/logs/clover.xml
           <metrics complexity="11" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="11" coveredelements="9"/>
         </class>
         <line num="42" type="method" name="userId" visibility="public" complexity="2" crap="2" count="2"/>
@@ -244,6 +281,10 @@
     <file name="/Users/alfrednutile/Code/laravel-feature-flag/src/routes.php">
       <metrics loc="51" ncloc="48" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
+<<<<<<< HEAD:coverage.clover
     <metrics files="14" loc="710" ncloc="525" classes="7" methods="28" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="138" coveredstatements="7" elements="166" coveredelements="9"/>
+=======
+    <metrics files="16" loc="832" ncloc="626" classes="9" methods="33" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="174" coveredstatements="21" elements="207" coveredelements="26"/>
+>>>>>>> Remove extra:build/logs/clover.xml
   </project>
 </coverage>
