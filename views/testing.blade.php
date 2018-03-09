@@ -4,7 +4,7 @@
     Testing On
 @endcan
 
-@canNot('feature-flag', 'testing')
+@cannot('feature-flag', 'testing')
     Testing Off
 @endcan
 

@@ -17,6 +17,7 @@ class FeatureFlags extends Migration
             $table->string('key');
             $table->text('variants');
         });
+
     }
 
     /**

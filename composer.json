@@ -18,12 +18,12 @@
   ],
   "require": {
     "php": "~5.6|~7.0",
-    "jowy/feature": "dev-master"
+    "jowy/feature": "dev-master",
+    "orchestra/database": "v3.5.0"
   },
   "require-dev": {
     "mockery/mockery": "0.9.*",
     "illuminate/support": "<=5.5",
-    "orchestra/database": "<=3.5",
     "orchestra/testbench": "<=3.5",
     "phpunit/phpunit": ">=5.4.3",
     "squizlabs/php_codesniffer": "^2.3"
