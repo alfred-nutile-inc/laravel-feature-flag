@@ -1,11 +1,12 @@
 <?php
 
+namespace Tests;
+
 use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagHelper;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
-
 
 class SettingsPageTest extends TestCase
 {
@@ -13,22 +14,20 @@ class SettingsPageTest extends TestCase
 
     private $user;
 
-    public function setup()
+    public function setUp()
     {
+        $this->markTestSkipped(
+            "We need to figure out how to do these UI tests outside of laravel OR
+        during the travis build setup a laravel up to run this in. 
+        More later https://github.com/orchestral/testbench/blob/3.5/README.md"
+        );
         parent::setUp();
 
         $user = factory(\App\User::class)->create(['is_admin' => 1]);
-
         $this->user = $user;
-
-
-
     }
 
-    /**
-     * @test
-     */
-    public function should_see_settings()
+    public function testShouldSeeSettings()
     {
 
         factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
@@ -40,13 +39,9 @@ class SettingsPageTest extends TestCase
 
         $this->actingAs($this->user)->visit('/admin/feature_flags')
             ->see('Create Feature Flag')->see('add-twitter-field');
-
     }
 
-    /**
-     * @test
-     */
-    public function can_edit_settings()
+    public function testCanEditSettings()
     {
         $key = str_random();
 
@@ -64,13 +59,9 @@ class SettingsPageTest extends TestCase
             ->press('Save')
             ->see('Set your feature flags')
             ->see($variant);
-
     }
 
-    /**
-     * @test
-     */
-    public function can_create_settings()
+    public function testCanCreateSettings()
     {
 
 
@@ -85,6 +76,4 @@ class SettingsPageTest extends TestCase
             ->see($key)
             ->see($variant);
     }
-
-
 }

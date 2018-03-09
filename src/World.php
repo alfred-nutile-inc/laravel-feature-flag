@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: alfrednutile
@@ -8,7 +9,6 @@
 
 namespace AlfredNutileInc\LaravelFeatureFlags;
 
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -16,17 +16,21 @@ class World implements \Feature\Contracts\World
 {
 
     /**
+     * @codeCoverageIgnore
+     * @noteImplemented
      * @param string $name
      * @param mixed $default
      * @return mixed
      */
     public function configValue($name, $default = null)
     {
-        // TODO: Implement configValue() method.
+        dd("HERE");
     }
 
     /**
      * @return mixed
+     * @codeCoverageIgnore
+     * @noteImplemented
      */
     public function uaid()
     {
@@ -38,28 +42,32 @@ class World implements \Feature\Contracts\World
      */
     public function userId()
     {
-        if(Auth::guest())
+        if (Auth::guest()) {
             return false;
+        }
 
-        return Auth::user()->email;
+        return Auth::user()->id;
     }
 
     /**
      * @param string|int $userId
      * @return string
      */
-    public function userName($userId)
+    public function userName($user_name)
     {
-        if(Auth::guest())
+        if (Auth::guest()) {
             return false;
+        }
 
-        return Auth::user()->email;
+        return Auth::user()->email == $user_name;
     }
 
     /**
      * @param int $userId
      * @param int $groupdId
      * @return bool
+     * @codeCoverageIgnore
+     * @noteImplemented
      */
     public function inGroup($userId, $groupdId)
     {
@@ -72,14 +80,13 @@ class World implements \Feature\Contracts\World
      */
     public function isAdmin($userId)
     {
-        if(Auth::guest())
-            return false;
-
-        return Auth::user()->is_admin == 1;
+        //need to implement
     }
 
     /**
      * @return bool
+     * @codeCoverageIgnore
+     * @noteImplemented
      */
     public function isInternalRequest()
     {
@@ -88,6 +95,8 @@ class World implements \Feature\Contracts\World
 
     /**
      * @return string
+     * @codeCoverageIgnore
+     * @noteImplemented
      */
     public function urlFeatures()
     {
@@ -99,6 +108,8 @@ class World implements \Feature\Contracts\World
      * @param $variant
      * @param $selector
      * @return void
+     * @codeCoverageIgnore
+     * @noteImplemented
      */
     public function log($name, $variant, $selector)
     {

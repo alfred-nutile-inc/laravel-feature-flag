@@ -1,0 +1,59 @@
+# Changelog
+
+All notable changes to `alfred-nutile-inc/laravel-feature-flag` will be documented in this file.
+
+Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+
+## 2018-03-09
+
+### Added
+- More tests as trying to get into database level
+- Cache to speed up the load of pages
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
+### Removed
+- Nothing
+
+### Security
+- Nothing
+
+## 2018-03-05
+
+### Added
+- Nothing
+
+### Deprecated
+- Nothing
+
+### Fixed
+- is_admin assumptoin on World.php
+
+### Removed
+- Nothing
+
+### Security
+- Nothing
+
+
+## 2018-03-02
+
+### Added
+- Import Export of existing or new FeatureFlags
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Less logging
+- Missing route
+
+### Removed
+- Nothing
+
+### Security
+- Nothing

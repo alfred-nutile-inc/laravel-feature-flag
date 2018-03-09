@@ -7,13 +7,17 @@ use InvalidArgumentException;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Auth\Access\Gate as GateFoundation;
 
+/**
+ * Class GateOverride
+ * @package AlfredNutileInc\LaravelFeatureFlags
+ * @codeCoverageIgnore
+ * @NOTE find out more what this class is doing
+ */
 class GateOverride extends GateFoundation
 {
 
-
     protected function callBeforeCallbacks($user, $ability, array $arguments)
     {
-
         $arguments = array_merge([$user, $ability], $arguments);
 
         foreach ($this->beforeCallbacks as $before) {
@@ -21,9 +25,5 @@ class GateOverride extends GateFoundation
                 return $result;
             }
         }
-
     }
-
-
-
 }

@@ -4,7 +4,6 @@ namespace AlfredNutileInc\LaravelFeatureFlags;
 
 use Illuminate\Database\Seeder;
 
-
 class AddExampleFeaturesTableSeeder extends Seeder
 {
     public function run()

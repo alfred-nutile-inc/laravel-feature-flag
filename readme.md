@@ -1,11 +1,18 @@
 # Feature Flags In Laravel
 
+
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Build Status][ico-travis]][link-travis]
+[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Quality Score][ico-code-quality]][link-code-quality]
+
+
   * [Overview](#overview)
   * [Installing](#installing)
   * [Usage](#usage)
   * [Usage Non Auth](#usage-non-auth)
   * [Example](#example)
-  * [Testing](#testing)  
+  * [Testing](#testing)
   * [Todo](#todo)
 
 <a name=overview></a>
@@ -13,9 +20,9 @@
 
 You can find a comprehensive blog post about [this library here](https://alfrednutile.info/posts/175). This project is a work in progress.
 
-We are working on using FeatureFlags or Toggles in our applications. For one we are aiming to do all our work on mainline branch at all times so this would be a key coding discipline to use FeatureFlags so we can hide a feature in progress knowing it will not interfere with the application. For example if a hotfix or another feature is ready to go to production we can push that with no worries of the in progress feature. 
+We are working on using FeatureFlags or Toggles in our applications. For one we are aiming to do all our work on mainline branch at all times so this would be a key coding discipline to use FeatureFlags so we can hide a feature in progress knowing it will not interfere with the application. For example if a hotfix or another feature is ready to go to production we can push that with no worries of the in progress feature.
 
-At the core we use this library [Atriedes/feature](https://github.com/Atriedes/feature) as it has the logic needed to consider common feature flag states eg user, users, on, off, groups, admin, internal, random etc. However, we are also mixing in some nice Laravel [Authorization](https://laravel.com/docs/5.2/authorization) features so you can do things like: 
+At the core we use this library [Atriedes/feature](https://github.com/Atriedes/feature) as it has the logic needed to consider common feature flag states eg user, users, on, off, groups, admin, internal, random etc. However, we are also mixing in some nice Laravel [Authorization](https://laravel.com/docs/5.2/authorization) features so you can do things like:
 
 In a blade template:
 
@@ -55,7 +62,7 @@ JavaScript::Put(
 
 
 <a name=installing></a>
-## Installing 
+## Installing
 
 Set your `composer.json` to the following to avoid composer error messages:
 
@@ -67,7 +74,7 @@ Set your `composer.json` to the following to avoid composer error messages:
 }
 ~~~
 
-Require the package using composer: 
+Require the package using composer:
 
 ~~~
 composer require alfred-nutile-inc/laravel-feature-flag
@@ -97,7 +104,7 @@ This package creates a number of routes. They can be overridden by publishing th
 php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
 ~~~
 
-This will then place the files in `resources/vendors/laravel-feature-flags`. Just note that the views `@extends('layouts.default')` so if yours differs you will need to make an adjustment to the published views files. 
+This will then place the files in `resources/vendors/laravel-feature-flags`. Just note that the views `@extends('layouts.default')` so if yours differs you will need to make an adjustment to the published views files.
 
 Next, publish the configuration:
 
@@ -107,6 +114,17 @@ php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\Featu
 
 Important: The routes detault to being projected by the 'auth' middleware but you should check your installation to make sure permissions are acceptable. Middleware settings are configurable in 'config/laravel-feature-flag.php' file.
 
+
+
+Make sure to set the `default_view` as well for the layout.
+
+`config/laravel-feature-flag.php`
+
+Your .env
+```
+LARAVEL_FEATURE_FLAG_VIEW="layouts.default"
+```
+
 <a name=usage></a>
 ## Usage
 
@@ -115,7 +133,7 @@ Visit `/admin/feature_flags` to manage features via the UI.
 
 ## Usage Non Auth
 
-Sometimes you are not using this at the Auth user level, it is rare for most of our use cases but for non authenticated situations you can just use this 
+Sometimes you are not using this at the Auth user level, it is rare for most of our use cases but for non authenticated situations you can just use this
 
 ~~~
 if(\Feature\Feature::isEnabled('see-twitter-field'))
@@ -155,15 +173,17 @@ php artisan migrate
 
 It has a rollback to help clean up after.
 
-There is a dummy route called `/admin/feature_flags/example` that you can visit and it will show that it is not on. But if you then go to the admin UI `/admin/feature_flags` you can toggle it on and off. 
+There is a dummy route called `/admin/feature_flags/example` that you can visit and it will show that it is not on. But if you then go to the admin UI `/admin/feature_flags` you can toggle it on and off.
 
 
 <a name=testing></a>
 ## Testing
 
+> [Helper Package](https://github.com/orchestral/testbench)
+
 This Library pulls in `jowy/feature` and that library has tests. Other than that the there is the settings page which I do have some Laravel tests for that you can run once the package is installed.
 
-Also if you are trying to test the use of it in your work you can use the helper trait in your test class 
+Also if you are trying to test the use of it in your work you can use the helper trait in your test class
 
 ```php
 
@@ -212,3 +232,18 @@ Then from there factory out your additions and state then reregister the world
   * Cache of the FeatureFlag Settings and update Cache on Change
   * Show how it works in the menu and other areas eg include and Provider
 
+
+
+[ico-version]: https://img.shields.io/packagist/v/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/alfred-nutile-inc/laravel-feature-flag/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/alfred-nutile-inc/laravel-feature-flag
+[link-travis]: https://travis-ci.org/alfred-nutile-inc/laravel-feature-flag
+[link-scrutinizer]: https://scrutinizer-ci.com/g/alfred-nutile-inc/laravel-feature-flag/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/alfred-nutile-inc/laravel-feature-flag
+[link-downloads]: https://packagist.org/packages/alfred-nutile-inc/laravel-feature-flag
+[link-author]: https://github.com/alfred-nutile-inc

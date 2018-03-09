@@ -5,10 +5,15 @@ namespace AlfredNutileInc\LaravelFeatureFlags;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+/**
+ * Class ExampleController
+ * @package AlfredNutileInc\LaravelFeatureFlags
+ * @codeCoverageIgnore
+ */
 class ExampleController extends Controller
 {
 
-    public function seeTwtterField()
+    public function seeTwitterField()
     {
 
         /**
@@ -18,5 +23,4 @@ class ExampleController extends Controller
         \Auth::login($user);
         return view('twitter::full_page_twitter_show', compact('user'));
     }
-
 }
