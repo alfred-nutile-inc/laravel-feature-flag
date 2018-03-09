@@ -58,6 +58,4 @@ class WorldTest extends TestCase
 
         $this->assertFalse($world->userName("bar@foo.com"));
     }
-
-
 }

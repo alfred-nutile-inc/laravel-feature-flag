@@ -22,10 +22,11 @@
     "orchestra/database": "v3.5.0"
   },
   "require-dev": {
-    "mockery/mockery": "0.9.*",
     "illuminate/support": "<=5.5",
+    "mockery/mockery": "0.9.*",
     "orchestra/testbench": "<=3.5",
     "phpunit/phpunit": ">=5.4.3",
+    "ramsey/uuid": "^3.0@dev",
     "squizlabs/php_codesniffer": "^2.3"
   },
   "autoload": {

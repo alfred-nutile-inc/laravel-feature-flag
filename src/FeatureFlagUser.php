@@ -11,6 +11,4 @@ class FeatureFlagUser extends Model implements Authenticatable
 
     use AuthenticableTrait;
     protected $table = "users";
-
-
 }

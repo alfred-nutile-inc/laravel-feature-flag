@@ -15,7 +15,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         return
             [
             FeatureFlagsProvider::class,
-        ];
+            ];
     }
 
 

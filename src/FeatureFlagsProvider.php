@@ -43,7 +43,6 @@ class FeatureFlagsProvider extends ServiceProvider
         $this->defineFeatureFlagGate($gate);
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-
     }
 
     /**

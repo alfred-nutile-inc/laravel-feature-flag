@@ -12,7 +12,7 @@ use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
 
 class ExportTest extends TestCase
 {
-    use DatabaseMigrations, DatabaseTransactions;
+    use DatabaseMigrations;
 
     public function testShouldExportFeatureFlags()
     {

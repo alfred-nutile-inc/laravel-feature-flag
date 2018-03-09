@@ -9,3 +9,11 @@ $factory->define(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class, functi
 });
 
 
+
+$factory->define(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlagUser::class, function ($faker) {
+    return [
+        'name' => $faker->word,
+        'email' => $faker->email,
+        'password' => bcrypt(str_random(25))
+    ];
+});
