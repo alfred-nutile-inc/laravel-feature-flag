@@ -10,15 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class FeatureFlagTest extends TestCase
 {
-    use DatabaseTransactions, FeatureFlagHelper;
+    use DatabaseMigrations, FeatureFlagHelper;
 
     public function setUp()
     {
-        $this->markTestSkipped(
-            "We need to figure out how to do these UI tests outside of laravel OR
-        during the travis build setup a laravel up to run this in. 
-        More later https://github.com/orchestral/testbench/blob/3.5/README.md"
-        );
+        // $this->markTestSkipped(
+        //     "We need to figure out how to do these UI tests outside of laravel OR
+        // during the travis build setup a laravel up to run this in.
+        // More later https://github.com/orchestral/testbench/blob/3.5/README.md"
+        // );
 
         parent::setUp();
 
@@ -45,7 +45,7 @@ class FeatureFlagTest extends TestCase
         factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'add-twitter-field',
-                'variants' => '{ "users": [ "' .  $user->email . '" ]}'
+                'variants' => '{ "users": [ "' . $user->email . '" ]}'
             ]
         );
 
@@ -110,7 +110,7 @@ class FeatureFlagTest extends TestCase
     public function testNotSeeTwitterOnProfilePage()
     {
         $this->markTestSkipped("Gotta get this one working");
-        $user_id = Rhumsaa\Uuid\Uuid::uuid4()->toString();
+        $user_id = str_random(32);
 
         $user = factory(\App\User::class)->create([
             'id' => $user_id,
@@ -133,4 +133,25 @@ class FeatureFlagTest extends TestCase
 
         $this->assertEquals(200, $response->status());
     }
+
+
+    public function testOnOff()
+    {
+
+        $feature = factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+            [
+                'key' => 'testing',
+                'variants' => 'off'
+            ]
+        );
+
+        $this->registerFeatureFlags();
+
+        $this->get('/example')->assertSee("Testing Off");
+
+        $feature->variants = "on";
+        $feature->save();
+        $this->get('/example')->assertSee("Testing On");
+    }
+
 }

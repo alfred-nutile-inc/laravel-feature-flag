@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: alfrednutile
@@ -16,11 +17,19 @@ trait FeatureFlagHelper
     public function registerFeatureFlags()
     {
         try {
-            $features = FeatureFlag::all()->toArray();
+            $features = \Cache::rememberForever('feature_flags:all', function () {
+                $features = FeatureFlag::all()->toArray();
 
-            foreach ($features as $key => $value) {
-                $features = $this->transformFeatures($features, $value, $key);
-                unset($features[$key]);
+                foreach ($features as $key => $value) {
+                    $features = $this->transformFeatures($features, $value, $key);
+                    unset($features[$key]);
+                }
+
+                return $features;
+            });
+
+            if (!$features) {
+                $features = [];
             }
 
             $world = new World();

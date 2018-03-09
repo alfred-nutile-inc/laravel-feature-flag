@@ -11,4 +11,11 @@ class FeatureFlag extends Model
     ];
 
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        static::saved(function ($model) {
+            \Cache::forget('feature_flags:all');
+        });
+    }
 }

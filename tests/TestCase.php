@@ -15,7 +15,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         return
             [
             FeatureFlagsProvider::class,
-            ];
+        ];
     }
 
 
@@ -24,6 +24,12 @@ class TestCase extends \Orchestra\Testbench\TestCase
         parent::setUp();
 
         $this->withFactories(__DIR__ . '/../database/factories');
+
+        $this->app['router']->get('example', function () {
+            return view("testing");
+        })->name('featured');
+
+        \View::addLocation(__DIR__ . '/../views');
     }
 
 

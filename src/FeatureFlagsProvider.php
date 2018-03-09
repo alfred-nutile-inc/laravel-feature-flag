@@ -32,9 +32,9 @@ class FeatureFlagsProvider extends ServiceProvider
 
         $this->injectLinks();
 
-        $this->registerFeatureFlags();
-
         $this->publishMigrations();
+
+        $this->registerFeatureFlags();
 
         $this->publishViews();
 
@@ -43,6 +43,12 @@ class FeatureFlagsProvider extends ServiceProvider
         $this->defineFeatureFlagGate($gate);
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $gate->define('testing', function ($user, $flag) {
+            dd("HERE");
+            return true;
+        });
+
     }
 
     /**
@@ -110,6 +116,7 @@ class FeatureFlagsProvider extends ServiceProvider
     private function defineFeatureFlagGate($gate)
     {
         $gate->define('feature-flag', function ($user, $flag_id) {
+            dd("HERE");
             try {
                 return \Feature\Feature::isEnabled($flag_id);
             } catch (\Exception $e) {

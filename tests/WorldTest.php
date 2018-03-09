@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: alfrednutile
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Mockery;
 use Mockery\Mock;
+use Illuminate\Foundation\Auth\User;
 
 class WorldTest extends TestCase
 {
@@ -30,7 +32,7 @@ class WorldTest extends TestCase
         $world = new World();
 
         Auth::shouldReceive('guest')->once()->andReturn(false);
-        Auth::shouldReceive('user')->once()->andReturn((object) [ "id" => 1]);
+        Auth::shouldReceive('user')->once()->andReturn((object)["id" => 1]);
 
         $this->assertEquals(1, $world->userId());
     }
@@ -41,7 +43,7 @@ class WorldTest extends TestCase
         $world = new World();
 
         Auth::shouldReceive('guest')->once()->andReturn(false);
-        Auth::shouldReceive('user')->once()->andReturn((object) [ "email" => "foo@foo.com"]);
+        Auth::shouldReceive('user')->once()->andReturn((object)["email" => "foo@foo.com"]);
 
         $this->assertTrue($world->userName("foo@foo.com"));
     }
@@ -52,29 +54,10 @@ class WorldTest extends TestCase
         $world = new World();
 
         Auth::shouldReceive('guest')->once()->andReturn(false);
-        Auth::shouldReceive('user')->once()->andReturn((object) [ "email" => "foo@foo.com"]);
+        Auth::shouldReceive('user')->once()->andReturn((object)["email" => "foo@foo.com"]);
 
         $this->assertFalse($world->userName("bar@foo.com"));
     }
 
 
-    public function testIsAdmin()
-    {
-
-        $world = new World();
-
-        Auth::shouldReceive('findOrFail')->once()->andReturn((object) [ "is_admin" => true]);
-
-        $this->assertTrue($world->isAdmin(1));
-    }
-
-    public function testIsNotAdmin()
-    {
-
-        $world = new World();
-
-        Auth::shouldReceive('findOrFail')->once()->andReturn((object) [ "is_admin" => false]);
-
-        $this->assertFalse($world->isAdmin(1));
-    }
 }
