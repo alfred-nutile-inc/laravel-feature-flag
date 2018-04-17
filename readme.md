@@ -64,20 +64,11 @@ JavaScript::Put(
 <a name=installing></a>
 ## Installing
 
-Set your `composer.json` to the following to avoid composer error messages:
-
-~~~
-"config": {
-        ....
-    },
-    "minimum-stability": "dev"
-}
-~~~
 
 Require the package using composer:
 
 ~~~
-composer require alfred-nutile-inc/laravel-feature-flag
+composer require "alfred-nutile-inc/laravel-feature-flag:>=v2"
 ~~~
 
 Add the following to your config/app.php providers array:
