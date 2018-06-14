@@ -1,0 +1,74 @@
+<?php
+
+namespace AlfredNutileInc\LaravelFeatureFlags\Console\Command;
+
+use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
+use Illuminate\Console\Command;
+use Illuminate\Log\Writer;
+
+class SyncFlags extends Command {
+
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'feature-flag:sync {--force}';
+
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Sync registered feature flags from the "laravel-feature-flag.sync_flags" config setting.';
+
+    /**
+     * @var \Illuminate\Log\Writer
+     */
+    private $logger;
+
+    public function __construct(Writer $logger)
+    {
+        parent::__construct();
+
+        $this->logger = $logger;
+    }
+
+    /**
+     *
+     */
+    public function handle()
+    {
+        $default_flags = (array) $this->getLaravel()
+            ->make('config')
+            ->get('laravel-feature-flag.sync_flags', []);
+
+        foreach ($default_flags as $key => $default_value) {
+            if (FeatureFlag::whereKey($key)->exists()) {
+                $this->printAndLogLine(sprintf('Feature flag with key "%s" already exists', $key));
+                continue;
+            }
+
+            // Otherwise, create the new flag with default value.
+            $feature = new FeatureFlag();
+            $feature->key = $key;
+            $feature->variants = $default_value;
+            $feature->save();
+
+            $this->printAndLogInfo(sprintf('Feature flag created with key "%s" with variant "%s"', $key, json_encode($default_value)));
+        }
+    }
+
+    private function printAndLogLine($line)
+    {
+        $this->line($line);
+        $this->logger->info($line);
+    }
+
+    private function printAndLogInfo($line)
+    {
+        $this->info($line);
+        $this->logger->info($line);
+    }
+}
