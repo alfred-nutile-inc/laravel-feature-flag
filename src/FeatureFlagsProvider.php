@@ -2,6 +2,7 @@
 
 namespace AlfredNutileInc\LaravelFeatureFlags;
 
+use AlfredNutileInc\LaravelFeatureFlags\Console\Command\SyncFlags;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Log;
@@ -43,6 +44,8 @@ class FeatureFlagsProvider extends ServiceProvider
         $this->defineFeatureFlagGate($gate);
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $this->registerCommands();
     }
 
     /**
@@ -133,5 +136,10 @@ class FeatureFlagsProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/laravel-feature-flag.php' => config_path('laravel-feature-flag.php'),
         ], 'config');
+    }
+
+    private function registerCommands()
+    {
+        $this->commands(SyncFlags::class);
     }
 }
