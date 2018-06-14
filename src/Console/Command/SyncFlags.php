@@ -6,7 +6,8 @@ use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
 use Illuminate\Console\Command;
 use Illuminate\Log\Writer;
 
-class SyncFlags extends Command {
+class SyncFlags extends Command
+{
 
     /**
      * The name and signature of the console command.
@@ -57,7 +58,14 @@ class SyncFlags extends Command {
             // Otherwise, create the new flag with default value.
             $flag = $this->createFeatureFlag($key, $default_value);
 
-            $this->printAndLogInfo(sprintf('Feature flag created with key "%s" [%d] with variant "%s"', $key, $flag->id, json_encode($default_value)));
+            $this->printAndLogInfo(
+                sprintf(
+                    'Feature flag created with key "%s" [%d] with variant "%s"',
+                    $key,
+                    $flag->id,
+                    json_encode($default_value)
+                )
+            );
         }
 
         if ($this->option('skip-cleanup')) {
@@ -72,7 +80,7 @@ class SyncFlags extends Command {
         if ($query->exists()) {
             $this->printAndLogLine(sprintf('Removing flags not defined in sync_flags'));
 
-            $query->chunk(100, function($chunk) {
+            $query->chunk(100, function ($chunk) {
                 foreach ($chunk as $flag) {
                     $flag->delete();
                     $this->printAndLogLine(sprintf('Feature flag with key "%s" deleted', $flag->key));
