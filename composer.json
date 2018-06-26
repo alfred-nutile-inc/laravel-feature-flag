@@ -40,7 +40,7 @@
     },
     "laravel": {
       "providers": [
-        "AlfredNutileInc\\LaravelFeatureFlag\\FeatureFlagsProvider"
+        "AlfredNutileInc\\LaravelFeatureFlags\\FeatureFlagsProvider"
       ]
     }
   },
