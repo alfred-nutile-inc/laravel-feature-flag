@@ -4,7 +4,7 @@ namespace AlfredNutileInc\LaravelFeatureFlags\Console\Command;
 
 use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
 use Illuminate\Console\Command;
-use Illuminate\Log\Writer;
+use Psr\Log\LoggerInterface;
 
 class SyncFlags extends Command
 {
@@ -25,11 +25,11 @@ class SyncFlags extends Command
     protected $description = 'Sync registered feature flags from the "laravel-feature-flag.sync_flags" config setting.';
 
     /**
-     * @var \Illuminate\Log\Writer
+     * @var \Psr\Log\LoggerInterface
      */
     private $logger;
 
-    public function __construct(Writer $logger)
+    public function __construct(LoggerInterface $logger)
     {
         parent::__construct();
 
