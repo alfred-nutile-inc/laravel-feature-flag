@@ -2,9 +2,7 @@
 
 namespace Tests;
 
-use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\StreamHandler;
-use Mockery;
+use Illuminate\Foundation\Auth\User;
 use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -31,33 +29,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         \View::addLocation(__DIR__ . '/../views');
 
-        $this->loadLaravelMigrations(['--database' => 'testing']);
-
-        $this->loadMigrationsFrom([
-            '--database' => 'testing',
-            '--path' => realpath(__DIR__ . '/migrations')
-        ]);
-
-        $output = $this->artisan('migrate', ['--database' => 'testing']);
+        $this->artisan('migrate', ['--database'=>'testing','--path'=>'migrations']);
+        $this->artisan('migrate', ['--database'=>'testing','--realpath'=> realpath(__DIR__.'/migrations')]);
     }
 
 
     protected function getEnvironmentSetUp($app)
     {
-        $app->configureMonologUsing(function ($monolog) {
-            $path = __DIR__ . "/logs/laravel.log";
-
-            $handler = $handler = new StreamHandler($path, 'debug');
-
-            $handler->setFormatter(tap(new LineFormatter(null, null, true, true), function ($formatter) {
-                /** @var LineFormatter $formatter */
-                $formatter->includeStacktraces();
-            }));
-
-            /** @var \Monolog\Logger $monolog */
-            $monolog->pushHandler($handler);
-        });
-
         $app['config']->set('database.default', 'testbench');
 
         $app['config']->set('database.connections.testbench', [
@@ -69,5 +47,15 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $app['config']->set('app.debug', env('APP_DEBUG', true));
 
         $app['config']->set('laravel-feature-flag.logging', true);
+
+//        $app['config']->set([
+//            'auth.providers.users' => [
+//                'driver' => '',
+//                'model' => User::class,
+//            ],
+//        ]);
+
+        $app['config']->set('logging.default', 'single');
+        $app['config']->set('logging.channels.single.path', __DIR__ . '/logs/laravel.log');
     }
 }
