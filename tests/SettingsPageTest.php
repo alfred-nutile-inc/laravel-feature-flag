@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagHelper;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlagHelper;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -30,7 +30,7 @@ class SettingsPageTest extends TestCase
     public function testShouldSeeSettings()
     {
 
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'add-twitter-field',
                 'variants' => [ 'users' => [$this->user->email]]
@@ -45,7 +45,7 @@ class SettingsPageTest extends TestCase
     {
         $key = str_random();
 
-        $flag = factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        $flag = factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => $key,
                 'variants' => [ 'users' => [$this->user->email]]

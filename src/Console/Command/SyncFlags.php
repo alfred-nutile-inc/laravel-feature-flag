@@ -1,8 +1,8 @@
 <?php
 
-namespace AlfredNutileInc\LaravelFeatureFlags\Console\Command;
+namespace FriendsOfCat\LaravelFeatureFlags\Console\Command;
 
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlag;
 use Illuminate\Console\Command;
 use Psr\Log\LoggerInterface;
 

@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagHelper;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlagHelper;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
-use AlfredNutileInc\LaravelFeatureFlags\World;
+use FriendsOfCat\LaravelFeatureFlags\World;
 
 class FeatureFlagHelperTest extends TestCase
 {
@@ -22,7 +22,7 @@ class FeatureFlagHelperTest extends TestCase
 
         \Cache::shouldReceive("forget")->twice();
 
-        $feature = factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        $feature = factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'foo',
                 'variants' => ["on"]
@@ -37,7 +37,7 @@ class FeatureFlagHelperTest extends TestCase
 
         $this->assertEquals(1, $world->userId());
 
-        $feature = factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        $feature = factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'bar',
                 'variants' => ["on"]
