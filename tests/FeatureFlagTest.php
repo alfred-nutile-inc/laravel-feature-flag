@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagHelper;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlagHelper;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagUser;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlagUser;
 use Ramsey\Uuid\Uuid;
 
 class FeatureFlagTest extends TestCase
@@ -29,7 +29,7 @@ class FeatureFlagTest extends TestCase
 
         $this->be($user);
 
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'add-twitter-field',
                 'variants' => '{ "users": [ "' . $user->email . '" ]}'
@@ -54,7 +54,7 @@ class FeatureFlagTest extends TestCase
 
         $this->be($user);
 
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'add-twitter-field',
                 'variants' => '{ "users": [ "foo" ]}'
@@ -81,7 +81,7 @@ class FeatureFlagTest extends TestCase
 
         $this->actingAs($user);
 
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'see-twitter-field',
                 'variants' => '{ "users": [ "' . $user->email . '" ]}'
@@ -107,7 +107,7 @@ class FeatureFlagTest extends TestCase
 
         $this->actingAs($user);
 
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'see-twitter-field',
                 'variants' => '{ "users": [ "not_you" ]}'
@@ -129,7 +129,7 @@ class FeatureFlagTest extends TestCase
 
         $this->be($this->user);
 
-        $feature = factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        $feature = factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'testing',
                 'variants' => 'off'

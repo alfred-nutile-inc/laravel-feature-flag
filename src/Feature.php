@@ -6,7 +6,7 @@
  * Time: 11:06 AM
  */
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
 use Feature\Contracts\World;
 

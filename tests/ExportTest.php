@@ -2,13 +2,13 @@
 
 namespace Tests;
 
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagHelper;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlagHelper;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
-use AlfredNutileInc\LaravelFeatureFlags\ExportImportRepository;
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
+use FriendsOfCat\LaravelFeatureFlags\ExportImportRepository;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlag;
 
 class ExportTest extends TestCase
 {
@@ -17,7 +17,7 @@ class ExportTest extends TestCase
     public function testShouldExportFeatureFlags()
     {
 
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'foo',
                 'variants' => ["on"]
@@ -57,7 +57,7 @@ class ExportTest extends TestCase
 
     public function testShouldNotDuplicateResults()
     {
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'foo',
                 'variants' => ["on"]
@@ -80,7 +80,7 @@ class ExportTest extends TestCase
 
     public function testUpdatesExistingResult()
     {
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'foo',
                 'variants' => ["off"]
