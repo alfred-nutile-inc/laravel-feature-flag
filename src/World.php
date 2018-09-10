@@ -7,7 +7,7 @@
  * Time: 11:08 AM
  */
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;

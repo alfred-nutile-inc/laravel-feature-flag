@@ -3,7 +3,7 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlag;
 use Illuminate\Support\Facades\Artisan;
 
 class SyncFlagsCommandTest extends TestCase

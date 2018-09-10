@@ -1,15 +1,15 @@
 <?php
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
-use AlfredNutileInc\LaravelFeatureFlags\Console\Command\SyncFlags;
+use FriendsOfCat\LaravelFeatureFlags\Console\Command\SyncFlags;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\Facades\Log;
 
 /**
  * Class FeatureFlagsProvider
- * @package AlfredNutileInc\LaravelFeatureFlags
+ * @package FriendsOfCat\LaravelFeatureFlags
  * @codeCoverageIgnore
  * Most of this is default Laravel provider setup
  */

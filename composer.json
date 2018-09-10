@@ -1,5 +1,5 @@
 {
-  "name": "alfred-nutile-inc/laravel-feature-flag",
+  "name": "friendsofcat/laravel-feature-flag",
   "description": "Feature Flags for Laravel",
   "authors": [
     {
@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "AlfredNutileInc\\LaravelFeatureFlags\\": "src/"
+      "FriendsOfCat\\LaravelFeatureFlags\\": "src/"
     }
   },
   "extra": {
@@ -40,7 +40,7 @@
     },
     "laravel": {
       "providers": [
-        "AlfredNutileInc\\LaravelFeatureFlags\\FeatureFlagsProvider"
+        "FriendsOfCat\\LaravelFeatureFlags\\FeatureFlagsProvider"
       ]
     }
   },

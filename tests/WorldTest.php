@@ -9,7 +9,7 @@
 
 namespace Tests;
 
-use AlfredNutileInc\LaravelFeatureFlags\World;
+use FriendsOfCat\LaravelFeatureFlags\World;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Mockery;

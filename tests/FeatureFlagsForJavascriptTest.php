@@ -8,8 +8,8 @@
 
 namespace Tests;
 
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlag;
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsForJavascript;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlag;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlagsForJavascript;
 use Illuminate\Support\Facades\App;
 
 class FeatureFlagsForJavascriptTest extends TestCase
