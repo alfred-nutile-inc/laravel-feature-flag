@@ -68,19 +68,19 @@ JavaScript::Put(
 Require the package using composer:
 
 ~~~
-composer require "alfred-nutile-inc/laravel-feature-flag:>=v2"
+composer require "friendsofcat/laravel-feature-flag"
 ~~~
 
 Add the following to your config/app.php providers array:
 
 ~~~
-AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider::class,
+FriendsOfCat\LaravelFeatureFlags\FeatureFlagsProvider::class,
 ~~~
 
 Publish the package migrations:
 
 ~~~
-php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='migrations'
+php artisan vendor:publish --provider="FriendsOfCat\LaravelFeatureFlags\FeatureFlagsProvider" --tag='migrations'
 ~~~
 
 Then run migration to setup the base table:
@@ -92,7 +92,7 @@ php artisan migrate
 This package creates a number of routes. They can be overridden by publishing the views:
 
 ~~~
-php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
+php artisan vendor:publish --provider="FriendsOfCat\LaravelFeatureFlags\FeatureFlagsProvider" --tag='views'
 ~~~
 
 This will then place the files in `resources/vendors/laravel-feature-flags`. Just note that the views `@extends('layouts.default')` so if yours differs you will need to make an adjustment to the published views files.
@@ -100,7 +100,7 @@ This will then place the files in `resources/vendors/laravel-feature-flags`. Jus
 Next, publish the configuration:
 
 ~~~
-php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider" --tag='config'
+php artisan vendor:publish --provider="FriendsOfCat\LaravelFeatureFlags\FeatureFlagsProvider" --tag='config'
 ~~~
 
 Important: The routes detault to being projected by the 'auth' middleware but you should check your installation to make sure permissions are acceptable. Middleware settings are configurable in 'config/laravel-feature-flag.php' file.
@@ -127,13 +127,11 @@ Visit `/admin/feature_flags` to manage features via the UI.
 Sometimes you are not using this at the Auth user level, it is rare for most of our use cases but for non authenticated situations you can just use this
 
 ~~~
-if(\Feature\Feature::isEnabled('see-twitter-field'))
+if(\FriendsOfCat\LaravelFeatureFlags\Feature::isEnabled('see-twitter-field'))
 {
   //do something
 }
 ~~~
-
-You can see more about that class here `vendor/jowy/feature/src/Feature/Feature.php`
 
 Remember you needed to put this into the database, so it is on or off. You might not have a UI, maybe this is a microservice for example, so just migrate the state into the database for example
 
@@ -152,13 +150,13 @@ Now when the FeatureFlag Provider instantiates it will set this as the "World" s
 If you want to try the demo/example also include the following in your config/app.php providers array:
 
 ~~~
-AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureProvider::class
+FriendsOfCat\LaravelFeatureFlags\ExampleFeatureProvider::class
 ~~~
 
 and then run:
 
 ~~~
-php artisan vendor:publish --provider="AlfredNutileInc\LaravelFeatureFlags\ExampleFeatureProvider" --tag='migrations'
+php artisan vendor:publish --provider="FriendsOfCat\LaravelFeatureFlags\ExampleFeatureProvider" --tag='migrations'
 php artisan migrate
 ~~~
 
@@ -172,13 +170,13 @@ There is a dummy route called `/admin/feature_flags/example` that you can visit 
 
 > [Helper Package](https://github.com/orchestral/testbench)
 
-This Library pulls in `jowy/feature` and that library has tests. Other than that the there is the settings page which I do have some Laravel tests for that you can run once the package is installed.
+There is the settings page which I do have some Laravel tests for that you can run once the package is installed.
 
 Also if you are trying to test the use of it in your work you can use the helper trait in your test class
 
 ```php
 
-    use DatabaseTransactions, \AlfredNutileInc\LaravelFeatureFlags\FeatureFlagHelper;
+    use DatabaseTransactions, \FriendsOfCat\LaravelFeatureFlags\FeatureFlagHelper;
 ```
 
 Then from there factory out your additions and state then reregister the world
@@ -203,7 +201,7 @@ Then from there factory out your additions and state then reregister the world
 
         $this->actingAs($user);
 
-        factory(\AlfredNutileInc\LaravelFeatureFlags\FeatureFlag::class)->create(
+        factory(\FriendsOfCat\LaravelFeatureFlags\FeatureFlag::class)->create(
             [
                 'key' => 'add-twitter-field',
                 'variants' => 'on'
@@ -222,19 +220,3 @@ Then from there factory out your additions and state then reregister the world
   * Use Model Events to do that level of work
   * Cache of the FeatureFlag Settings and update Cache on Change
   * Show how it works in the menu and other areas eg include and Provider
-
-
-
-[ico-version]: https://img.shields.io/packagist/v/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/alfred-nutile-inc/laravel-feature-flag/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/alfred-nutile-inc/laravel-feature-flag.svg?style=flat-square
-
-[link-packagist]: https://packagist.org/packages/alfred-nutile-inc/laravel-feature-flag
-[link-travis]: https://travis-ci.org/alfred-nutile-inc/laravel-feature-flag
-[link-scrutinizer]: https://scrutinizer-ci.com/g/alfred-nutile-inc/laravel-feature-flag/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/alfred-nutile-inc/laravel-feature-flag
-[link-downloads]: https://packagist.org/packages/alfred-nutile-inc/laravel-feature-flag
-[link-author]: https://github.com/alfred-nutile-inc

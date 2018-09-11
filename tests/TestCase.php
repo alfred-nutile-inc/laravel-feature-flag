@@ -3,7 +3,7 @@
 namespace Tests;
 
 use Illuminate\Foundation\Auth\User;
-use AlfredNutileInc\LaravelFeatureFlags\FeatureFlagsProvider;
+use FriendsOfCat\LaravelFeatureFlags\FeatureFlagsProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

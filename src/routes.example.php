@@ -6,7 +6,7 @@
 Route::get(
     'admin/feature_flags/example',
     [
-        'uses' => '\AlfredNutileInc\LaravelFeatureFlags\ExampleController@seeTwitterField',
+        'uses' => '\FriendsOfCat\LaravelFeatureFlags\ExampleController@seeTwitterField',
         'as' => 'laravel-feature-flag.example'
     ]
 );

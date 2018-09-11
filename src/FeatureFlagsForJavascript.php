@@ -1,6 +1,6 @@
 <?php
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
 class FeatureFlagsForJavascript
 {
@@ -10,7 +10,7 @@ class FeatureFlagsForJavascript
 
         $results = [];
         foreach ($flags as $feature_flag) {
-            $results[$feature_flag->key] = \Feature\Feature::isEnabled($feature_flag->key);
+            $results[$feature_flag->key] = Feature::isEnabled($feature_flag->key);
         }
 
         return $results;
