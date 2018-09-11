@@ -127,7 +127,7 @@ Visit `/admin/feature_flags` to manage features via the UI.
 Sometimes you are not using this at the Auth user level, it is rare for most of our use cases but for non authenticated situations you can just use this
 
 ~~~
-if(\Feature\Feature::isEnabled('see-twitter-field'))
+if(\FriendsOfCat\LaravelFeatureFlags\Feature::isEnabled('see-twitter-field'))
 {
   //do something
 }

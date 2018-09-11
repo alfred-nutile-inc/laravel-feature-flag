@@ -114,7 +114,7 @@ class FeatureFlagsProvider extends ServiceProvider
     {
         $gate->define('feature-flag', function ($user, $flag_id) {
             try {
-                return \Feature\Feature::isEnabled($flag_id);
+                return Feature::isEnabled($flag_id);
             } catch (\Exception $e) {
                 if (config("laravel-feature-flag.logging")) {
                     Log::info(
