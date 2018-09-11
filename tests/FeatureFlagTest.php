@@ -168,7 +168,6 @@ class FeatureFlagTest extends TestCase
         $this->registerFeatureFlags();
 
         $this->get('/example')->assertSeeText("Testing On");
-
     }
 
 
@@ -188,6 +187,5 @@ class FeatureFlagTest extends TestCase
         $this->registerFeatureFlags();
 
         $this->get('/example')->assertSeeText("Testing Off");
-
     }
 }

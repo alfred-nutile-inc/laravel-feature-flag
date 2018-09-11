@@ -28,7 +28,7 @@ class Feature
     /**
      * @param array $stanza
      */
-    private function __construct( array $stanza)
+    private function __construct(array $stanza)
     {
         $this->stanza = $stanza;
     }
@@ -57,7 +57,7 @@ class Feature
     {
         $feature_variant = static::getConfig($feature);
 
-        if($feature_variant != self::ON and $feature_variant != self::OFF) {
+        if ($feature_variant != self::ON and $feature_variant != self::OFF) {
             return self::isUserEnabled($feature_variant);
         }
 
@@ -89,8 +89,8 @@ class Feature
     protected static function isUserEnabled($feature_variant)
     {
         if ($user_email = static::getUserEmail()) {
-
-            $result = (is_array($feature_variant)) ? json_decode($feature_variant['variants'], true) : json_decode($feature_variant, true);
+            $result = (is_array($feature_variant)) ? json_decode($feature_variant['variants'], true)
+                : json_decode($feature_variant, true);
             $target_array = $result['users'];
 
             if (in_array($user_email, $target_array)) {
@@ -113,6 +113,4 @@ class Feature
 
         return Auth::user()->email;
     }
-
-
 }
