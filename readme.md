@@ -133,8 +133,6 @@ if(\FriendsOfCat\LaravelFeatureFlags\Feature::isEnabled('see-twitter-field'))
 }
 ~~~
 
-You can see more about that class here `vendor/jowy/feature/src/Feature/Feature.php`
-
 Remember you needed to put this into the database, so it is on or off. You might not have a UI, maybe this is a microservice for example, so just migrate the state into the database for example
 
 ~~~
@@ -172,7 +170,7 @@ There is a dummy route called `/admin/feature_flags/example` that you can visit 
 
 > [Helper Package](https://github.com/orchestral/testbench)
 
-This Library pulls in `jowy/feature` and that library has tests. Other than that the there is the settings page which I do have some Laravel tests for that you can run once the package is installed.
+There is the settings page which I do have some Laravel tests for that you can run once the package is installed.
 
 Also if you are trying to test the use of it in your work you can use the helper trait in your test class
 
