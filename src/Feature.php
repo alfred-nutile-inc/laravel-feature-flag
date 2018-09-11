@@ -6,91 +6,111 @@
  * Time: 11:06 AM
  */
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
-use Feature\Contracts\World;
+use Illuminate\Support\Facades\Auth;
 
-class Feature implements World
+class Feature
 {
+    const ON  = "on";
+    const OFF = "off";
 
     /**
-     * @param string $name
-     * @param mixed $default
-     * @return mixed
+     * @var self
      */
-    public function configValue($name, $default = null)
+    private static $instance;
+
+    /**
+     * @var array
+     */
+    private $stanza;
+
+    /**
+     * @param array $stanza
+     */
+    private function __construct(array $stanza)
     {
-        // TODO: Implement configValue() method.
+        $this->stanza = $stanza;
     }
 
     /**
-     * @return mixed
+     * @param array $stanza
+     * @return Feature
      */
-    public function uaid()
+    public static function create(array $stanza)
     {
-        // TODO: Implement uaid() method.
+        if (static::$instance) {
+            return static::$instance;
+        }
+
+        static::$instance = new static($stanza);
+
+        return static::$instance;
+    }
+
+
+    /**
+     * @param $feature
+     * @return bool
+     */
+    public static function isEnabled($feature)
+    {
+        $feature_variant = static::getConfig($feature);
+
+        if ($feature_variant != self::ON and $feature_variant != self::OFF) {
+            return self::isUserEnabled($feature_variant);
+        }
+
+        return ($feature_variant == self::ON);
     }
 
     /**
-     * @return int
+     * @param $feature
+     * @return string
      */
-    public function userId()
+    private static function getConfig($feature)
     {
-        // TODO: Implement userId() method.
+        if (isset(static::$instance->stanza[$feature])) {
+            return static::$instance->stanza[$feature];
+        }
+
+        $feature_flag = FeatureFlag::where('key', $feature)->first();
+        if (isset($feature_flag)) {
+            return  $feature_flag->variants;
+        }
+
+        return self::OFF;
     }
+
+    /**
+     * @param $feature_variant
+     * @return bool
+     */
+    protected static function isUserEnabled($feature_variant)
+    {
+        if ($user_email = static::getUserEmail()) {
+            $result = (is_array($feature_variant)) ? json_decode($feature_variant['variants'], true)
+                : json_decode($feature_variant, true);
+            $target_array = $result['users'];
+
+            if (in_array($user_email, $target_array)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * @param string|int $userId
      * @return string
      */
-    public function userName($userId)
+    public static function getUserEmail()
     {
-        // TODO: Implement userName() method.
-    }
+        if (Auth::guest()) {
+            return false;
+        }
 
-    /**
-     * @param int $userId
-     * @param int $groupdId
-     * @return bool
-     */
-    public function inGroup($userId, $groupdId)
-    {
-        // TODO: Implement inGroup() method.
-    }
-
-    /**
-     * @param int $userId
-     * @return bool
-     */
-    public function isAdmin($userId)
-    {
-        // TODO: Implement isAdmin() method.
-    }
-
-    /**
-     * @return bool
-     */
-    public function isInternalRequest()
-    {
-        // TODO: Implement isInternalRequest() method.
-    }
-
-    /**
-     * @return string
-     */
-    public function urlFeatures()
-    {
-        // TODO: Implement urlFeatures() method.
-    }
-
-    /**
-     * @param $name
-     * @param $variant
-     * @param $selector
-     * @return void
-     */
-    public function log($name, $variant, $selector)
-    {
-        // TODO: Implement log() method.
+        return Auth::user()->email;
     }
 }

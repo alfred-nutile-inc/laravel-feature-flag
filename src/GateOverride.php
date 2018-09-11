@@ -1,6 +1,6 @@
 <?php
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
 use Illuminate\Support\Str;
 use InvalidArgumentException;
@@ -9,7 +9,7 @@ use Illuminate\Auth\Access\Gate as GateFoundation;
 
 /**
  * Class GateOverride
- * @package AlfredNutileInc\LaravelFeatureFlags
+ * @package FriendsOfCat\LaravelFeatureFlags
  * @codeCoverageIgnore
  * @NOTE find out more what this class is doing
  */

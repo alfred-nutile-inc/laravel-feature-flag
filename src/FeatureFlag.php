@@ -1,6 +1,6 @@
 <?php
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,8 @@ class FeatureFlag extends Model
 
     protected static function boot()
     {
+        parent::boot();
+
         static::saved(function ($model) {
             \Cache::forget('feature_flags:all');
         });

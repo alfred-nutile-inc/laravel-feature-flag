@@ -1,6 +1,6 @@
 <?php
 
-namespace AlfredNutileInc\LaravelFeatureFlags;
+namespace FriendsOfCat\LaravelFeatureFlags;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

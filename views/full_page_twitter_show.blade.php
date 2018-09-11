@@ -67,7 +67,7 @@
                                   @endif
 
                                   <pre>
-                                    <?php print_r(\Feature\Feature::isEnabled('see-twitter-field')); ?>
+                                    <?php print_r(\FriendsOfCat\LaravelFeatureFlags\Feature::isEnabled('see-twitter-field')); ?>
                                   </pre>
                               </div>
                           </div>
@@ -80,7 +80,7 @@
                <p>
                  <b>Twitter Flag NOT ON</b>
                  <pre>
-                   <?php print_r(\Feature\Feature::isEnabled('see-twitter-field')); ?>
+                   <?php print_r(\FriendsOfCat\LaravelFeatureFlags\Feature::isEnabled('see-twitter-field')); ?>
                  </pre>
                </p>
               @endcan
